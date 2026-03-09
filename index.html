@@ -8,43 +8,31 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --cream:#f5f0e8;
-      --sand:#ede5d4;
-      --dusty:#8BAABD;
+      --cream:#faf7f2;
+      --warm:#f5efe4;
+      --dusty:#7a9eb5;
       --dusty-light:#b8ceda;
-      --dusty-pale:#dce8ef;
-      --magenta:#c9587a;
-      --magenta-light:#e8a0b4;
-      --magenta-pale:#f5dce4;
-      --ink:#2e2a26;
+      --dusty-pale:#e4edf3;
+      --navy:#1e3a52;
+      --magenta:#b84c6e;
+      --magenta-light:#dfa0b4;
+      --magenta-pale:#f8eaf0;
+      --ink:#252320;
       --muted:#7a6f67;
-      --stripe1:#d8e5ec;
-      --stripe2:#f5f0e8;
     }
     html{scroll-behavior:smooth}
     body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
     ::-webkit-scrollbar{width:5px}
-    ::-webkit-scrollbar-thumb{background:var(--dusty);border-radius:3px}
-
-    /* STRIPE TEXTURE utility */
-    .striped{
-      background-image:repeating-linear-gradient(
-        0deg,
-        var(--stripe1) 0px,
-        var(--stripe1) 18px,
-        var(--stripe2) 18px,
-        var(--stripe2) 36px
-      );
-    }
+    ::-webkit-scrollbar-thumb{background:var(--dusty-light);border-radius:3px}
 
     /* NAV */
     nav{
       position:fixed;top:0;left:0;right:0;z-index:200;
       display:flex;justify-content:space-between;align-items:center;
       padding:1.1rem 3.5rem;
-      background:rgba(245,240,232,0.92);
+      background:rgba(250,247,242,0.93);
       backdrop-filter:blur(14px);
-      border-bottom:2px solid var(--dusty-light);
+      border-bottom:1px solid var(--dusty-pale);
     }
     .nav-name{
       font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;
@@ -66,24 +54,30 @@
     .hero-left{
       display:flex;flex-direction:column;justify-content:center;
       padding:5rem 3rem 5rem 4rem;
-      background:var(--sand);
-      background-image:repeating-linear-gradient(
-        0deg,
-        var(--dusty-pale) 0px,var(--dusty-pale) 14px,
-        var(--sand) 14px,var(--sand) 28px
-      );
+      background:var(--dusty-pale);
       position:relative;
     }
+    /* polka dot overlay on hero */
+    .hero-left::before{
+      content:'';
+      position:absolute;inset:0;
+      background-image:radial-gradient(circle, var(--dusty-light) 1.5px, transparent 1.5px);
+      background-size:28px 28px;
+      opacity:0.35;
+      pointer-events:none;
+    }
     .hero-left::after{
-      content:'';position:absolute;bottom:0;left:0;right:0;height:5px;
-      background:linear-gradient(90deg,var(--dusty),var(--magenta),var(--dusty-light));
+      content:'';position:absolute;bottom:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--dusty),var(--magenta));
     }
     .hero-eyebrow{
+      position:relative;
       font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
       color:var(--magenta);margin-bottom:1.2rem;
       opacity:0;animation:fadeUp 0.6s 0.1s forwards;
     }
     h1.hero-name{
+      position:relative;
       font-family:'Cormorant Garamond',serif;
       font-size:clamp(3.5rem,6.5vw,5.8rem);
       font-weight:300;line-height:1.0;letter-spacing:-0.01em;
@@ -92,11 +86,13 @@
     }
     h1.hero-name em{font-style:italic;color:var(--dusty)}
     .hero-bio{
+      position:relative;
       font-size:0.95rem;color:var(--muted);line-height:1.85;
       max-width:400px;margin-bottom:2rem;
       opacity:0;animation:fadeUp 0.6s 0.5s forwards;
     }
     .hero-pills{
+      position:relative;
       display:flex;flex-wrap:wrap;gap:0.5rem;
       opacity:0;animation:fadeUp 0.6s 0.7s forwards;
     }
@@ -107,27 +103,33 @@
     }
     .pill:nth-child(even){border-color:var(--magenta-light);color:var(--magenta)}
     .hero-right{
-      background-image:repeating-linear-gradient(
-        0deg,
-        var(--dusty-pale) 0px,var(--dusty-pale) 18px,
-        #eef4f7 18px,#eef4f7 36px
-      );
+      background:var(--magenta-pale);
       display:flex;align-items:flex-end;justify-content:center;
       padding:4rem 2.5rem 0;
       overflow:hidden;
+      position:relative;
       opacity:0;animation:fadeIn 1s 0.4s forwards;
     }
+    .hero-right::before{
+      content:'';
+      position:absolute;inset:0;
+      background-image:radial-gradient(circle, var(--magenta-light) 1.5px, transparent 1.5px);
+      background-size:24px 24px;
+      opacity:0.25;
+      pointer-events:none;
+    }
     .hero-photo{
+      position:relative;
       width:100%;max-width:320px;
       border-radius:6px 6px 0 0;
       object-fit:cover;object-position:top center;
       height:70vh;
-      box-shadow:0 -16px 50px rgba(46,42,38,0.12);
+      box-shadow:0 -16px 50px rgba(30,58,82,0.12);
       border:3px solid white;
       border-bottom:none;
     }
 
-    /* SECTION BASE */
+    /* SECTIONS */
     section{padding:5.5rem 4rem}
     .s-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--magenta);margin-bottom:0.5rem}
     .s-title{
@@ -136,55 +138,48 @@
       line-height:1.15;letter-spacing:-0.01em;margin-bottom:2.5rem;
     }
     .s-title em{font-style:italic;color:var(--dusty)}
-    .divider{border:none;border-top:2px dashed var(--dusty-light);margin:0 4rem}
+    .divider{border:none;border-top:1px solid var(--dusty-pale);margin:0 4rem}
 
-    /* ABOUT + INTERESTS */
+    /* ABOUT */
     #about{background:var(--cream)}
     .about-wrap{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start}
     .about-photo-col{display:flex;flex-direction:column;gap:1rem}
     .about-photo{
       width:100%;aspect-ratio:4/5;
       object-fit:cover;object-position:top;
-      border-radius:4px;
+      border-radius:6px;
       border:3px solid white;
-      box-shadow:10px 10px 0 var(--dusty-light);
+      box-shadow:10px 10px 0 var(--dusty-pale);
     }
     .about-quick{
       background:var(--dusty-pale);border-radius:8px;
-      border:1px solid var(--dusty-light);
       padding:1.2rem 1.4rem;
       font-size:0.82rem;color:var(--muted);line-height:1.9;
     }
-    .about-quick strong{color:var(--ink);font-weight:500}
+    .about-quick strong{color:var(--navy);font-weight:500}
     .about-content p{font-size:0.97rem;color:var(--muted);line-height:1.9;margin-bottom:1rem}
     .about-content p strong{color:var(--ink);font-weight:500}
 
     .interests-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.8rem;margin-top:2rem}
     .int-card{
-      background:var(--cream);
-      border:1.5px solid var(--dusty-light);border-radius:10px;
+      background:white;
+      border:1px solid var(--dusty-pale);border-radius:10px;
       padding:1.1rem 1.3rem;
       display:flex;align-items:flex-start;gap:0.8rem;
       transition:all 0.22s;
     }
-    .int-card:nth-child(even){border-color:var(--magenta-light)}
-    .int-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(139,170,189,0.2)}
+    .int-card:nth-child(even){border-color:var(--magenta-pale)}
+    .int-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(122,158,181,0.15)}
     .int-emoji{font-size:1.4rem;line-height:1;flex-shrink:0;margin-top:0.1rem}
     .int-title{font-size:0.88rem;font-weight:500;color:var(--ink);margin-bottom:0.15rem}
     .int-desc{font-size:0.77rem;color:var(--muted);line-height:1.5}
 
     /* EXPERIENCE */
-    #experience{
-      background-image:repeating-linear-gradient(
-        0deg,
-        var(--dusty-pale) 0px,var(--dusty-pale) 14px,
-        var(--cream) 14px,var(--cream) 28px
-      );
-    }
+    #experience{background:var(--warm)}
     .exp-list{display:flex;flex-direction:column}
     .exp-item{
       display:grid;grid-template-columns:180px 1fr;gap:2.5rem;
-      padding:1.8rem 0;border-bottom:1.5px dashed var(--dusty-light);
+      padding:1.8rem 0;border-bottom:1px solid var(--dusty-pale);
     }
     .exp-item:last-child{border-bottom:none}
     .exp-date{font-size:0.72rem;color:var(--dusty);letter-spacing:0.06em;margin-bottom:0.3rem;font-weight:500}
@@ -199,22 +194,35 @@
       font-size:0.82rem;color:var(--muted);line-height:1.7;
       padding-left:1.1rem;position:relative;margin-bottom:0.2rem;
     }
-    .exp-bullets li::before{content:'✦';position:absolute;left:0;font-size:0.5rem;top:0.45rem;color:var(--dusty)}
+    .exp-bullets li::before{content:'●';position:absolute;left:0;font-size:0.4rem;top:0.5rem;color:var(--dusty)}
 
     /* PROJECTS */
     #projects{background:var(--cream)}
     .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
     .proj-card{
       background:white;
-      border:2px solid var(--dusty-light);border-radius:10px;
-      padding:1.75rem;transition:all 0.25s;position:relative;overflow:hidden;
+      border:1px solid var(--dusty-pale);border-radius:12px;
+      padding:1.75rem;transition:all 0.25s;
+      position:relative;overflow:hidden;
     }
-    .proj-card:nth-child(even){border-color:var(--magenta-light)}
-    .proj-card:hover{box-shadow:6px 6px 0 var(--dusty-light);transform:translate(-3px,-3px)}
-    .proj-card:nth-child(even):hover{box-shadow:6px 6px 0 var(--magenta-light)}
+    .proj-card:nth-child(even){border-color:var(--magenta-pale)}
+    /* polka dot corner accent */
+    .proj-card::before{
+      content:'';
+      position:absolute;top:0;right:0;
+      width:80px;height:80px;
+      background-image:radial-gradient(circle, var(--dusty-pale) 2px, transparent 2px);
+      background-size:12px 12px;
+      opacity:0.8;
+    }
+    .proj-card:nth-child(even)::before{
+      background-image:radial-gradient(circle, var(--magenta-pale) 2px, transparent 2px);
+    }
+    .proj-card:hover{box-shadow:0 12px 36px rgba(122,158,181,0.15);transform:translateY(-4px)}
+    .proj-card:nth-child(even):hover{box-shadow:0 12px 36px rgba(184,76,110,0.1)}
     .proj-num{
       font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;
-      color:var(--dusty-light);line-height:1;margin-bottom:0.5rem;
+      color:var(--dusty-pale);line-height:1;margin-bottom:0.5rem;
     }
     .proj-card:nth-child(even) .proj-num{color:var(--magenta-pale)}
     .proj-title{
@@ -225,10 +233,10 @@
     .proj-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.9rem}
     .ptag{
       font-size:0.67rem;padding:0.2rem 0.6rem;
-      border:1px solid var(--dusty-light);border-radius:100px;
-      color:var(--dusty);font-weight:500;
+      background:var(--dusty-pale);border-radius:100px;
+      color:var(--dusty);font-weight:500;border:none;
     }
-    .proj-card:nth-child(even) .ptag{border-color:var(--magenta-light);color:var(--magenta)}
+    .proj-card:nth-child(even) .ptag{background:var(--magenta-pale);color:var(--magenta)}
     .proj-link{
       font-size:0.78rem;font-weight:500;color:var(--dusty);
       text-decoration:none;letter-spacing:0.04em;transition:letter-spacing 0.2s;
@@ -236,64 +244,59 @@
     .proj-card:nth-child(even) .proj-link{color:var(--magenta)}
     .proj-link:hover{letter-spacing:0.09em}
 
-    /* SKILLS */
-    #skills{
-      background:var(--dusty);
-      background-image:repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.08) 0px,rgba(255,255,255,0.08) 18px,
-        transparent 18px,transparent 36px
-      );
-      color:white;
-    }
-    #skills .s-label{color:var(--magenta-pale)}
+    /* SKILLS — navy background, clean */
+    #skills{background:var(--navy);color:var(--cream)}
+    #skills .s-label{color:var(--magenta-light)}
     #skills .s-title{color:white}
     .skills-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
     .sg-title{
       font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;
-      color:var(--magenta-pale);margin-bottom:1rem;
-      padding-bottom:0.4rem;border-bottom:1px dashed rgba(255,255,255,0.25);
+      color:var(--dusty-light);margin-bottom:1rem;
+      padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.1);
     }
     .skill-tag{
       display:inline-block;
       font-size:0.77rem;padding:0.3rem 0.75rem;
-      border:1px solid rgba(255,255,255,0.3);border-radius:100px;
-      color:rgba(255,255,255,0.85);margin:0.2rem 0.2rem 0.2rem 0;
+      border:1px solid rgba(184,206,218,0.3);border-radius:100px;
+      color:rgba(250,247,242,0.75);margin:0.2rem 0.2rem 0.2rem 0;
       transition:all 0.2s;cursor:default;
     }
-    .skill-tag:hover{background:rgba(255,255,255,0.2);border-color:white;color:white}
+    .skill-tag:hover{background:rgba(122,158,181,0.25);border-color:var(--dusty-light);color:white}
 
     /* CONTACT */
     #contact{
-      background-image:repeating-linear-gradient(
-        0deg,
-        var(--magenta-pale) 0px,var(--magenta-pale) 16px,
-        #fdf0f4 16px,#fdf0f4 32px
-      );
+      background:var(--magenta-pale);
       display:flex;flex-direction:column;align-items:center;text-align:center;
+      position:relative;overflow:hidden;
     }
+    /* polka dots bg on contact */
+    #contact::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle, var(--magenta-light) 1.5px, transparent 1.5px);
+      background-size:30px 30px;
+      opacity:0.2;pointer-events:none;
+    }
+    #contact > *{position:relative}
     #contact .s-title{max-width:480px}
     .contact-note{font-size:0.92rem;color:var(--muted);max-width:400px;margin-bottom:2rem}
     .contact-row{display:flex;gap:0.9rem;flex-wrap:wrap;justify-content:center}
     .cbtn{
       display:inline-flex;align-items:center;gap:0.4rem;
-      padding:0.8rem 1.8rem;border-radius:3px;
+      padding:0.8rem 1.8rem;border-radius:100px;
       font-size:0.82rem;font-weight:500;text-decoration:none;
-      border:2px solid var(--ink);color:var(--ink);background:transparent;
+      border:1.5px solid var(--ink);color:var(--ink);background:white;
       transition:all 0.22s;
     }
     .cbtn:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
     .cbtn.filled{background:var(--dusty);color:white;border-color:var(--dusty)}
-    .cbtn.filled:hover{background:var(--magenta);border-color:var(--magenta)}
+    .cbtn.filled:hover{background:var(--navy);border-color:var(--navy)}
 
     footer{
-      padding:1.4rem 4rem;
-      background:var(--ink);
+      padding:1.4rem 4rem;background:var(--navy);
       display:flex;justify-content:space-between;align-items:center;
-      font-size:0.73rem;color:rgba(245,240,232,0.35);
+      font-size:0.73rem;color:rgba(250,247,242,0.35);
     }
 
-    /* ANIMATIONS */
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
     .reveal{opacity:0;transform:translateY(26px);transition:opacity 0.65s ease,transform 0.65s ease}
@@ -328,7 +331,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-left">
     <p class="hero-eyebrow">Cornell University · CS '29</p>
@@ -349,7 +351,6 @@
 
 <hr class="divider"/>
 
-<!-- ABOUT + INTERESTS -->
 <section id="about">
   <div class="about-wrap">
     <div class="about-photo-col reveal">
@@ -368,22 +369,10 @@
       <p>I grew up in <strong>Hong Kong</strong>, which gave me a global lens on everything I do. I'm fluent in <strong>Mandarin</strong> and have travelled to nearly every country in the world — Africa is next on the list! 🌍</p>
       <p>Outside of class I'm on the <strong>Cornell Engineering World Health</strong> project team building a React.js telehealth platform, and part of <strong>Hack4Impact</strong> using tech for social good.</p>
       <div class="interests-grid">
-        <div class="int-card">
-          <div class="int-emoji">☕</div>
-          <div><div class="int-title">Coffee Shop Hopping</div><div class="int-desc">Always scouting cozy spots with a great matcha or pour-over in every new city.</div></div>
-        </div>
-        <div class="int-card">
-          <div class="int-emoji">✈️</div>
-          <div><div class="int-title">Travelling</div><div class="int-desc">Nearly every country in the world and counting. Every trip is a new perspective.</div></div>
-        </div>
-        <div class="int-card">
-          <div class="int-emoji">🀄</div>
-          <div><div class="int-title">Speaking Mandarin</div><div class="int-desc">Grew up in Hong Kong — language opens up entirely new worlds.</div></div>
-        </div>
-        <div class="int-card">
-          <div class="int-emoji">🎲</div>
-          <div><div class="int-title">Board Games</div><div class="int-desc">Strategy, luck, chaos — I'm here for all of it. Catan has ended many friendships.</div></div>
-        </div>
+        <div class="int-card"><div class="int-emoji">☕</div><div><div class="int-title">Coffee Shop Hopping</div><div class="int-desc">Always scouting cozy spots with a great matcha or pour-over in every new city.</div></div></div>
+        <div class="int-card"><div class="int-emoji">✈️</div><div><div class="int-title">Travelling</div><div class="int-desc">Nearly every country in the world and counting. Every trip is a new perspective.</div></div></div>
+        <div class="int-card"><div class="int-emoji">🀄</div><div><div class="int-title">Speaking Mandarin</div><div class="int-desc">Grew up in Hong Kong — language opens up entirely new worlds.</div></div></div>
+        <div class="int-card"><div class="int-emoji">🎲</div><div><div class="int-title">Board Games</div><div class="int-desc">Strategy, luck, chaos — I'm here for all of it. Catan has ended many friendships.</div></div></div>
       </div>
     </div>
   </div>
@@ -391,81 +380,43 @@
 
 <hr class="divider"/>
 
-<!-- EXPERIENCE -->
 <section id="experience">
   <p class="s-label reveal">Work & Leadership</p>
   <h2 class="s-title reveal">Experience</h2>
   <div class="exp-list">
     <div class="exp-item reveal">
       <div><div class="exp-date">Jan 2025 – Present</div><div class="exp-org">Widget Factory Idler · Virtual</div></div>
-      <div>
-        <div class="exp-role">Problem Design Engineer</div>
-        <ul class="exp-bullets"><li>Tracing the intent behind code changes to ensure AI model training problems are fair, clear, and coherent.</li></ul>
-      </div>
+      <div><div class="exp-role">Problem Design Engineer</div><ul class="exp-bullets"><li>Tracing the intent behind code changes to ensure AI model training problems are fair, clear, and coherent.</li></ul></div>
     </div>
     <div class="exp-item reveal">
       <div><div class="exp-date">Nov 2025 – Present</div><div class="exp-org">Cornell Engineering World Health · Ithaca, NY</div></div>
-      <div>
-        <div class="exp-role">Software Subteam Member</div>
-        <ul class="exp-bullets">
-          <li>Building a React.js telehealth platform for remote consultations between indigenous medicine practitioners and patients.</li>
-          <li>Designing scalable, user-centric features for underserved healthcare communities.</li>
-        </ul>
-      </div>
+      <div><div class="exp-role">Software Subteam Member</div><ul class="exp-bullets"><li>Building a React.js telehealth platform for remote consultations between indigenous medicine practitioners and patients.</li><li>Designing scalable, user-centric features for underserved healthcare communities.</li></ul></div>
     </div>
     <div class="exp-item reveal">
       <div><div class="exp-date">Nov 2025</div><div class="exp-org">Susquehanna International Group · Virtual</div></div>
-      <div>
-        <div class="exp-role">Susquehanna Discovery Day</div>
-        <ul class="exp-bullets"><li>Analyzed SIG's global market-making strategies through trader-led case studies and simulated trading scenarios.</li></ul>
-      </div>
+      <div><div class="exp-role">Susquehanna Discovery Day</div><ul class="exp-bullets"><li>Analyzed SIG's global market-making strategies through trader-led case studies and simulated trading scenarios.</li></ul></div>
     </div>
     <div class="exp-item reveal">
       <div><div class="exp-date">Aug 2024 – May 2025</div><div class="exp-org">MIT Lincoln Laboratory · Virtual</div></div>
-      <div>
-        <div class="exp-role">Research Student</div>
-        <ul class="exp-bullets">
-          <li>Conducted text analysis on StackExchange posts using Naive Bayes to classify experts vs. non-experts by writing style.</li>
-          <li>Built a program to assess text sentiment as a classification signal.</li>
-        </ul>
-      </div>
+      <div><div class="exp-role">Research Student</div><ul class="exp-bullets"><li>Conducted text analysis on StackExchange posts using Naive Bayes to classify experts vs. non-experts by writing style.</li><li>Built a program to assess text sentiment as a classification signal.</li></ul></div>
     </div>
     <div class="exp-item reveal">
       <div><div class="exp-date">Jul – Aug 2024</div><div class="exp-org">Girls Who Code · Virtual</div></div>
-      <div>
-        <div class="exp-role">Data Science + AI Student</div>
-        <ul class="exp-bullets">
-          <li>Used Python to analyze global health datasets and create data visualizations.</li>
-          <li>Built a predictive model forecasting drinking water access trends across developing nations.</li>
-        </ul>
-      </div>
+      <div><div class="exp-role">Data Science + AI Student</div><ul class="exp-bullets"><li>Used Python to analyze global health datasets and create data visualizations.</li><li>Built a predictive model forecasting drinking water access trends across developing nations.</li></ul></div>
     </div>
     <div class="exp-item reveal">
       <div><div class="exp-date">Feb 2021 – May 2025</div><div class="exp-org">Code Ninjas · Arlington Heights, IL</div></div>
-      <div>
-        <div class="exp-role">Coding Instructor</div>
-        <ul class="exp-bullets">
-          <li>Worked 150+ hours helping students build 50+ games in Scratch, Roblox, and Unity.</li>
-          <li>Developed summer camp curriculum and tested new junior student programs.</li>
-        </ul>
-      </div>
+      <div><div class="exp-role">Coding Instructor</div><ul class="exp-bullets"><li>Worked 150+ hours helping students build 50+ games in Scratch, Roblox, and Unity.</li><li>Developed summer camp curriculum and tested new junior student programs.</li></ul></div>
     </div>
     <div class="exp-item reveal">
       <div><div class="exp-date">Aug 2021 – May 2025</div><div class="exp-org">Fremd Student Council · Palatine, IL</div></div>
-      <div>
-        <div class="exp-role">Communications Officer</div>
-        <ul class="exp-bullets">
-          <li>Organized events and coordinated blood drives for 12,000+ students.</li>
-          <li>Managed all digital communications and social media campaigns.</li>
-        </ul>
-      </div>
+      <div><div class="exp-role">Communications Officer</div><ul class="exp-bullets"><li>Organized events and coordinated blood drives for 12,000+ students.</li><li>Managed all digital communications and social media campaigns.</li></ul></div>
     </div>
   </div>
 </section>
 
 <hr class="divider"/>
 
-<!-- PROJECTS -->
 <section id="projects">
   <p class="s-label reveal">My Work</p>
   <h2 class="s-title reveal">Projects</h2>
@@ -503,40 +454,18 @@
 
 <hr class="divider"/>
 
-<!-- SKILLS -->
 <section id="skills">
   <p class="s-label reveal">What I Know</p>
   <h2 class="s-title reveal">Skills</h2>
   <div class="skills-wrap reveal">
-    <div class="skill-group">
-      <div class="sg-title">Languages</div>
-      <span class="skill-tag">Java</span><span class="skill-tag">Python</span>
-      <span class="skill-tag">JavaScript</span><span class="skill-tag">HTML / CSS</span>
-    </div>
-    <div class="skill-group">
-      <div class="sg-title">Frameworks</div>
-      <span class="skill-tag">React.js</span><span class="skill-tag">React Native</span>
-      <span class="skill-tag">Node.js</span><span class="skill-tag">Android Studio</span>
-    </div>
-    <div class="skill-group">
-      <div class="sg-title">Data & ML</div>
-      <span class="skill-tag">Naive Bayes</span><span class="skill-tag">SMOTE</span>
-      <span class="skill-tag">Data Visualization</span><span class="skill-tag">NLP</span>
-    </div>
-    <div class="skill-group">
-      <div class="sg-title">Tools</div>
-      <span class="skill-tag">Git & GitHub</span><span class="skill-tag">Figma</span>
-      <span class="skill-tag">VS Code</span>
-    </div>
-    <div class="skill-group">
-      <div class="sg-title">Human Languages</div>
-      <span class="skill-tag">English (Native)</span>
-      <span class="skill-tag">Mandarin (Intermediate)</span>
-    </div>
+    <div class="skill-group"><div class="sg-title">Languages</div><span class="skill-tag">Java</span><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">HTML / CSS</span></div>
+    <div class="skill-group"><div class="sg-title">Frameworks</div><span class="skill-tag">React.js</span><span class="skill-tag">React Native</span><span class="skill-tag">Node.js</span><span class="skill-tag">Android Studio</span></div>
+    <div class="skill-group"><div class="sg-title">Data & ML</div><span class="skill-tag">Naive Bayes</span><span class="skill-tag">SMOTE</span><span class="skill-tag">Data Visualization</span><span class="skill-tag">NLP</span></div>
+    <div class="skill-group"><div class="sg-title">Tools</div><span class="skill-tag">Git & GitHub</span><span class="skill-tag">Figma</span><span class="skill-tag">VS Code</span></div>
+    <div class="skill-group"><div class="sg-title">Human Languages</div><span class="skill-tag">English (Native)</span><span class="skill-tag">Mandarin (Intermediate)</span></div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <p class="s-label reveal">Say Hello</p>
   <h2 class="s-title reveal">Let's <em>Connect</em> ✦</h2>
