@@ -471,12 +471,37 @@
     <div class="skill-group"><div class="sg-title">Human Languages</div><span class="skill-tag">English (Native)</span><span class="skill-tag">Mandarin (Intermediate)</span></div>
   </div>
 </section>
+<footer>
+  <span>&#169; 2026 Kashish Balan</span>
+</footer>
 
-<section id="contact">
-  <p class="s-label reveal">Say Hello</p>
-  <h2 class="s-title reveal">Let's <em>Connect</em> ✦</h2>
-  <p class="contact-note reveal">Open to opportunities, collabs, or just a chat about travel and coffee.</p>
-  <div class="contact-row reveal">
-    
-    <a href="https://www.linkedin.com/in/kashish-balan/" target="_blank" class="cbtn">LinkedIn</a>
-    <a href="https://github.com/
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  var e = 'kdb89' + '@' + 'cornell.edu';
+  var ab = document.getElementById('email-about');
+  if (ab) {
+    var a = document.createElement('a');
+    a.href = 'mailto:' + e;
+    a.textContent = e;
+    a.style.cssText = 'color:var(--ink);text-decoration:none;border-bottom:1px solid #b8ceda';
+    ab.appendChild(a);
+  }
+  var btn = document.getElementById('email-btn');
+  if (btn) {
+    btn.onclick = function(ev) { ev.preventDefault(); window.location.href = 'mailto:' + e; };
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, {threshold:0.05});
+  document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+  var secs = document.querySelectorAll('section[id]');
+  var lnks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', function() {
+    var cur = '';
+    secs.forEach(function(s) { if(window.scrollY >= s.offsetTop - 130) cur = s.id; });
+    lnks.forEach(function(a) { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--magenta)' : ''; });
+  });
+});
+</script>
+</body>
+</html>
