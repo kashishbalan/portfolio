@@ -180,6 +180,27 @@
       padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,0.1);
     }
     .exp-item:last-child{border-bottom:none}
+    .exp-meta{display:flex;gap:0.9rem;align-items:flex-start}
+    .exp-logo{
+      flex-shrink:0;
+      width:44px;height:44px;
+      border-radius:8px;
+      background:white;
+      display:flex;align-items:center;justify-content:center;
+      padding:5px;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 2px 8px rgba(0,0,0,0.18);
+      overflow:hidden;
+    }
+    .exp-logo img{width:100%;height:100%;object-fit:contain}
+    .exp-logo-fallback{
+      width:100%;height:100%;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--dusty),var(--magenta));
+      color:white;border-radius:5px;
+      font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1rem;
+    }
+    .exp-meta-text{flex:1;min-width:0}
     .exp-date{font-size:0.72rem;color:var(--dusty-light);letter-spacing:0.06em;margin-bottom:0.3rem;font-weight:500}
     .exp-org{font-size:0.75rem;color:rgba(250,247,242,0.45);line-height:1.4}
     .exp-role{
@@ -313,6 +334,7 @@
       .about-wrap{grid-template-columns:1fr;gap:2rem}
       .about-photo{aspect-ratio:3/2;object-position:center 20%}
       .exp-item{grid-template-columns:1fr;gap:0.4rem}
+      .exp-logo{width:38px;height:38px}
       .interests-grid{grid-template-columns:1fr}
       footer{padding:1.2rem 1.5rem;flex-direction:column;gap:0.3rem}
     }
@@ -383,35 +405,35 @@
   <h2 class="s-title reveal">Experience</h2>
   <div class="exp-list">
     <div class="exp-item reveal">
-      <div><div class="exp-date">Mar 2026 – Present</div><div class="exp-org">Cornell Bowers CIS · Ithaca, NY</div></div>
+      <div class="exp-meta"><div class="exp-logo"><img src="https://www.google.com/s2/favicons?domain=cornell.edu&sz=128" alt="Cornell"/></div><div class="exp-meta-text"><div class="exp-date">Mar 2026 – Present</div><div class="exp-org">Cornell Bowers CIS · Ithaca, NY</div></div></div>
       <div><div class="exp-role">Natural Language Processing Researcher</div><ul class="exp-bullets"><li>Engineered Python (BeautifulSoup) pipelines to scrape and process large-scale speech data from Filmot/YouTube for prosody analysis.</li><li>Applying ML classification to identify stress patterns, enabling scalable acoustic and phonetic insights.</li></ul></div>
     </div>
     <div class="exp-item reveal">
-      <div><div class="exp-date">Feb 2026 – Present</div><div class="exp-org">Cornell Hack4Impact · Ithaca, NY</div></div>
+      <div class="exp-meta"><div class="exp-logo"><img src="https://www.google.com/s2/favicons?domain=hack4impact.org&sz=128" alt="Hack4Impact"/></div><div class="exp-meta-text"><div class="exp-date">Feb 2026 – Present</div><div class="exp-org">Cornell Hack4Impact · Ithaca, NY</div></div></div>
       <div><div class="exp-role">Full Stack Developer</div><ul class="exp-bullets"><li>Built admin dashboard features including search, filter, and bulk edit using JavaScript, Algolia, and Azure.</li><li>Integrated full-stack content management tools to streamline delivery of equitable, evidence-based healthcare information.</li></ul></div>
     </div>
     <div class="exp-item reveal">
-      <div><div class="exp-date">Jan 2025 – Present</div><div class="exp-org">Widget Factory Idler · Virtual</div></div>
+      <div class="exp-meta"><div class="exp-logo"><img src="https://www.google.com/s2/favicons?domain=widgetfactory.ai&sz=128" alt="Widget Factory"/></div><div class="exp-meta-text"><div class="exp-date">Jan 2025 – Present</div><div class="exp-org">Widget Factory Idler · Virtual</div></div></div>
       <div><div class="exp-role">Problem Design Engineer</div><ul class="exp-bullets"><li>Tracing the intent behind code changes to ensure AI model training problems are fair, clear, and coherent.</li></ul></div>
     </div>
     <div class="exp-item reveal">
-      <div><div class="exp-date">Nov 2025 – Present</div><div class="exp-org">Cornell Engineering World Health · Ithaca, NY</div></div>
+      <div class="exp-meta"><div class="exp-logo"><img src="https://www.google.com/s2/favicons?domain=cornell.edu&sz=128" alt="Cornell EWH"/></div><div class="exp-meta-text"><div class="exp-date">Nov 2025 – Present</div><div class="exp-org">Cornell Engineering World Health · Ithaca, NY</div></div></div>
       <div><div class="exp-role">Software Subteam Member</div><ul class="exp-bullets"><li>Building a React.js telehealth platform for remote consultations between indigenous medicine practitioners and patients.</li><li>Designing scalable, user-centric features for underserved healthcare communities.</li></ul></div>
     </div>
     <div class="exp-item reveal">
-      <div><div class="exp-date">Nov 2025</div><div class="exp-org">Susquehanna International Group · Virtual</div></div>
+      <div class="exp-meta"><div class="exp-logo"><img src="https://www.google.com/s2/favicons?domain=sig.com&sz=128" alt="SIG"/></div><div class="exp-meta-text"><div class="exp-date">Nov 2025</div><div class="exp-org">Susquehanna International Group · Virtual</div></div></div>
       <div><div class="exp-role">Susquehanna Discovery Day</div><ul class="exp-bullets"><li>Analyzed SIG's global market-making strategies through trader-led case studies and simulated trading scenarios.</li></ul></div>
     </div>
     <div class="exp-item reveal">
-      <div><div class="exp-date">Aug 2024 – May 2025</div><div class="exp-org">MIT Lincoln Laboratory · Virtual</div></div>
+      <div class="exp-meta"><div class="exp-logo"><img src="https://www.google.com/s2/favicons?domain=ll.mit.edu&sz=128" alt="MIT Lincoln Lab"/></div><div class="exp-meta-text"><div class="exp-date">Aug 2024 – May 2025</div><div class="exp-org">MIT Lincoln Laboratory · Virtual</div></div></div>
       <div><div class="exp-role">Research Student</div><ul class="exp-bullets"><li>Conducted text analysis on StackExchange posts using Naive Bayes to classify experts vs. non-experts by writing style.</li><li>Built a program to assess text sentiment as a classification signal.</li></ul></div>
     </div>
     <div class="exp-item reveal">
-      <div><div class="exp-date">Jul – Aug 2024</div><div class="exp-org">Girls Who Code · Virtual</div></div>
+      <div class="exp-meta"><div class="exp-logo"><img src="https://www.google.com/s2/favicons?domain=girlswhocode.com&sz=128" alt="Girls Who Code"/></div><div class="exp-meta-text"><div class="exp-date">Jul – Aug 2024</div><div class="exp-org">Girls Who Code · Virtual</div></div></div>
       <div><div class="exp-role">Data Science + AI Student</div><ul class="exp-bullets"><li>Used Python to analyze global health datasets and create data visualizations.</li><li>Built a predictive model forecasting drinking water access trends across developing nations.</li></ul></div>
     </div>
     <div class="exp-item reveal">
-      <div><div class="exp-date">Feb 2021 – May 2025</div><div class="exp-org">Code Ninjas · Arlington Heights, IL</div></div>
+      <div class="exp-meta"><div class="exp-logo"><img src="https://www.google.com/s2/favicons?domain=codeninjas.com&sz=128" alt="Code Ninjas"/></div><div class="exp-meta-text"><div class="exp-date">Feb 2021 – May 2025</div><div class="exp-org">Code Ninjas · Arlington Heights, IL</div></div></div>
       <div><div class="exp-role">Coding Instructor</div><ul class="exp-bullets"><li>Worked 150+ hours helping students build 50+ games in Scratch, Roblox, and Unity.</li><li>Developed summer camp curriculum and tested new junior student programs.</li></ul></div>
     </div>
     
@@ -450,7 +472,7 @@
       <h3 class="proj-title">Expert Classifier</h3>
       <p class="proj-desc">NLP model classifying experts vs. non-experts on StackExchange using Naive Bayes and text sentiment analysis. Research at MIT Lincoln Laboratory.</p>
       <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Naive Bayes</span><span class="ptag">NLP</span></div>
-      <a href="#" class="proj-link">View Project →</a>
+      <a href="Expert_Classifier_Presentation.pdf" target="_blank" class="proj-link">View Presentation →</a>
     </div>
   </div>
 </section>
@@ -486,6 +508,28 @@
 
 <script>
 window.addEventListener('DOMContentLoaded', function() {
+  // Logo fallback: if favicon fails or is too small, show styled initial
+  document.querySelectorAll('.exp-logo img').forEach(function(img) {
+    img.addEventListener('error', function() {
+      var alt = img.getAttribute('alt') || '?';
+      var initial = alt.trim().charAt(0).toUpperCase();
+      var fb = document.createElement('div');
+      fb.className = 'exp-logo-fallback';
+      fb.textContent = initial;
+      img.replaceWith(fb);
+    });
+    img.addEventListener('load', function() {
+      // If favicon is the tiny default (16x16 stretched), swap to fallback
+      if (img.naturalWidth < 32) {
+        var alt = img.getAttribute('alt') || '?';
+        var initial = alt.trim().charAt(0).toUpperCase();
+        var fb = document.createElement('div');
+        fb.className = 'exp-logo-fallback';
+        fb.textContent = initial;
+        img.replaceWith(fb);
+      }
+    });
+  });
   var e = 'kdb89' + '@' + 'cornell.edu';
   var ab = document.getElementById('email-about');
   if (ab) {
