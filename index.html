@@ -1,206 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kashish Balan</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--cream:#faf7f2;--warm:#f5efe4;--dusty:#7a9eb5;--dusty-light:#b8ceda;--dusty-pale:#e4edf3;--navy:#1e3a52;--magenta:#b84c6e;--magenta-light:#dfa0b4;--magenta-pale:#f8eaf0;--ink:#252320;--muted:#7a6f67}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--dusty-light);border-radius:3px}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3.5rem;background:rgba(250,247,242,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--dusty-pale)}
-.nav-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;letter-spacing:0.06em;color:var(--ink);text-decoration:none}
-.nav-links{display:flex;gap:2.2rem;list-style:none}
-.nav-links a{font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
-.nav-links a:hover{color:var(--magenta)}
-#hero{min-height:100vh;display:grid;grid-template-columns:1.1fr 0.9fr;padding-top:4rem}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 3rem 5rem 4rem;background:var(--dusty-pale);position:relative}
-.hero-left::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,var(--dusty-light) 1.5px,transparent 1.5px);background-size:28px 28px;opacity:0.35;pointer-events:none}
-.hero-left::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--dusty),var(--magenta))}
-.hero-eyebrow{position:relative;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--magenta);margin-bottom:1.5rem}
-h1.hero-name{position:relative;font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,9vw,7.5rem);font-weight:300;line-height:0.92;letter-spacing:-0.02em;color:var(--ink)}
-h1.hero-name .last{display:block;font-style:italic;color:var(--dusty);margin-left:0.3em}
-.hero-flourish{position:relative;display:inline-block;margin-top:0.6rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--magenta)}
-.hero-bio{position:relative;font-size:0.95rem;color:var(--muted);line-height:1.85;max-width:430px;margin-top:1.6rem}
-.hero-right{background:var(--magenta-pale);display:flex;align-items:flex-end;justify-content:center;padding:4rem 2.5rem 0;overflow:hidden;position:relative}
-.hero-right::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,var(--magenta-light) 1.5px,transparent 1.5px);background-size:24px 24px;opacity:0.25;pointer-events:none}
-.hero-photo-wrap{position:relative;width:100%;max-width:320px;height:70vh}
-.hero-photo{width:100%;height:100%;border-radius:6px 6px 0 0;object-fit:cover;object-position:top center;box-shadow:0 -16px 50px rgba(30,58,82,0.12);border:3px solid white;border-bottom:none;cursor:pointer;transition:transform 0.4s ease}
-.hero-photo:hover{transform:translateY(-6px)}
-.map-callout{position:absolute;top:25%;left:-110px;transform:rotate(-8deg);cursor:pointer;z-index:5;animation:floaty 3s ease-in-out infinite}
-@keyframes floaty{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(-8deg) translateY(-8px)}}
-.map-callout-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--magenta);background:white;padding:0.5rem 1.1rem;border-radius:24px;border:2px solid var(--magenta);box-shadow:4px 4px 0 var(--magenta-pale);white-space:nowrap}
-.map-callout-arrow{position:absolute;bottom:-32px;right:8px;width:55px;height:42px;transform:rotate(15deg)}
-.map-callout-arrow path{stroke:var(--magenta);stroke-width:2;fill:none;stroke-linecap:round}
-section{padding:5.5rem 4rem}
-.s-number{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--magenta);margin-bottom:0.3rem;letter-spacing:0.1em}
-.s-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--magenta);margin-bottom:0.5rem}
-.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;line-height:1.15;letter-spacing:-0.01em;margin-bottom:2.5rem}
-.s-title em{font-style:italic;color:var(--dusty)}
-.divider{border:none;border-top:1px solid var(--dusty-pale);margin:0 4rem}
-#about{background:var(--cream)}
-.about-wrap{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start}
-.about-photo-col{display:flex;flex-direction:column;gap:1rem}
-.about-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;border-radius:6px;border:3px solid white;box-shadow:10px 10px 0 var(--dusty-pale)}
-.about-quick{background:var(--dusty-pale);border-radius:8px;padding:1.2rem 1.4rem;font-size:0.82rem;color:var(--muted);line-height:1.9}
-.about-quick strong{color:var(--navy);font-weight:500}
-.aq-item{display:flex;flex-direction:column;padding:0.55rem 0;border-bottom:1px solid rgba(122,158,181,0.15)}
-.aq-item:last-child{border-bottom:none}
-.aq-label{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--dusty);font-weight:600;margin-bottom:0.1rem}
-.aq-val{font-size:0.88rem;color:var(--ink);font-weight:400}
-.about-content p{font-size:0.97rem;color:var(--muted);line-height:1.9;margin-bottom:1rem}
-.about-content p strong{color:var(--ink);font-weight:500}
-.interests-list{display:flex;align-items:center;flex-wrap:wrap;gap:0.4rem;margin-top:1.5rem}
-.interests-label{font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink)}
-.interests-label-sep{color:var(--muted);margin:0 0.3rem}
-.interests-item{font-size:0.88rem;color:var(--muted)}
-.interests-sep{color:var(--dusty-light);font-size:1rem;margin:0 0.1rem}
-.travel-teaser{margin-top:2.5rem;background:linear-gradient(135deg,var(--dusty-pale) 0%,var(--magenta-pale) 100%);border-radius:14px;padding:1.5rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.4rem;align-items:center;position:relative;overflow:hidden;border:1px solid rgba(184,206,218,0.4);cursor:pointer;transition:transform 0.25s,box-shadow 0.25s}
-.travel-teaser:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(122,158,181,0.18)}
-.travel-teaser::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(184,76,110,0.15) 1px,transparent 1px);background-size:18px 18px;pointer-events:none}
-.travel-mini-map{position:relative;width:130px;height:80px;flex-shrink:0}
-.travel-mini-map svg{width:100%;height:100%}
-.travel-mini-map .mini-land{fill:var(--dusty);opacity:0.5}
-.travel-mini-map .mini-land.skipped{fill:#d4c3cb;opacity:0.55}
-.travel-mini-map .mini-pin{fill:var(--magenta);animation:pulseDot 2.5s ease-in-out infinite}
-@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:0.55}}
-.travel-teaser-content{position:relative}
-.travel-teaser-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;color:var(--ink);line-height:1.2;margin-bottom:0.2rem}
-.travel-teaser-title em{font-style:italic;color:var(--magenta)}
-.travel-teaser-sub{font-size:0.82rem;color:var(--muted);line-height:1.5}
-.travel-teaser-cta{position:relative;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--magenta);white-space:nowrap;background:white;padding:0.5rem 1rem;border-radius:100px;border:1.5px solid var(--magenta);box-shadow:3px 3px 0 var(--magenta-pale);transition:transform 0.25s}
-.travel-teaser:hover .travel-teaser-cta{transform:translateX(4px)}
-#experience{background:var(--navy)}
-#experience .s-number{color:var(--magenta-light)}
-#experience .s-label{color:var(--magenta-light)}
-#experience .s-title{color:white;font-size:clamp(2.4rem,4vw,3.4rem)}
-.exp-list{display:flex;flex-direction:column}
-.exp-item{display:grid;grid-template-columns:180px 1fr;gap:2.5rem;padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,0.1)}
-.exp-item:last-child{border-bottom:none}
-.exp-meta{display:flex;gap:0.9rem;align-items:flex-start}
-.exp-logo{flex-shrink:0;width:44px;height:44px;border-radius:8px;background:white;display:flex;align-items:center;justify-content:center;padding:5px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 2px 8px rgba(0,0,0,0.18);overflow:hidden}
-.exp-logo img{width:100%;height:100%;object-fit:contain}
-.exp-logo-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--dusty),var(--magenta));color:white;border-radius:5px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1rem}
-.exp-meta-text{flex:1;min-width:0}
-.exp-date{font-size:0.72rem;color:var(--dusty-light);letter-spacing:0.06em;margin-bottom:0.3rem;font-weight:500}
-.exp-org{font-size:0.75rem;color:rgba(250,247,242,0.45);line-height:1.4}
-.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:white;margin-bottom:0.2rem}
-.exp-bullets{list-style:none;padding:0}
-.exp-bullets li{font-size:0.82rem;color:rgba(250,247,242,0.65);line-height:1.7;padding-left:1.1rem;position:relative;margin-bottom:0.2rem}
-.exp-bullets li::before{content:'●';position:absolute;left:0;font-size:0.4rem;top:0.5rem;color:var(--magenta-light)}
-#projects{background:var(--cream)}
-.proj-row{display:grid;grid-template-columns:1.05fr 1fr;gap:2.5rem;align-items:center;margin-bottom:2.5rem;background:white;border-radius:14px;padding:1.75rem;border:1px solid var(--dusty-pale);position:relative;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
-.proj-row:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(122,158,181,0.13)}
-.proj-row::before{content:'';position:absolute;top:0;right:0;width:110px;height:110px;background-image:radial-gradient(circle,var(--dusty-pale) 2px,transparent 2px);background-size:12px 12px;opacity:0.6;pointer-events:none}
-.proj-row:nth-child(even)::before{background-image:radial-gradient(circle,var(--magenta-pale) 2px,transparent 2px);opacity:0.8}
-.proj-row.featured{border:1.5px solid var(--magenta-light)}
-.proj-img-wrap{width:100%;border-radius:8px;overflow:hidden;background:var(--dusty-pale);border:1px solid var(--dusty-pale);box-shadow:0 10px 28px rgba(122,158,181,0.16)}
-.proj-img-wrap img{width:100%;display:block}
-.proj-img-placeholder{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,var(--dusty-pale),var(--magenta-pale));display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);text-align:center;padding:1.5rem}
-.proj-img-placeholder-icon{font-size:2.5rem;margin-bottom:0.4rem;color:var(--dusty)}
-.proj-img-placeholder-text{font-size:0.95rem;line-height:1.4}
-.proj-content{position:relative}
-.proj-badge{display:inline-block;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--magenta);background:var(--magenta-pale);padding:0.3rem 0.7rem;border-radius:100px;margin-bottom:0.7rem;font-weight:500}
-.proj-row h3{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:600;color:var(--ink);line-height:1.1;margin-bottom:0.3rem}
-.proj-row h3 em{font-style:italic;color:var(--magenta)}
-.proj-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:var(--dusty);margin-bottom:0.9rem}
-.proj-desc{font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.1rem}
-.proj-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.1rem}
-.ptag{background:var(--dusty-pale);color:var(--dusty);font-size:0.7rem;padding:0.25rem 0.7rem;border-radius:100px;font-weight:500}
-.proj-row:nth-child(even) .ptag{background:var(--magenta-pale);color:var(--magenta)}
-.proj-links{display:flex;gap:0.6rem;flex-wrap:wrap}
-.plink{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.76rem;font-weight:500;text-decoration:none;padding:0.5rem 1.1rem;border-radius:100px;transition:all 0.22s}
-.plink.primary{background:var(--magenta);color:white;border:1.5px solid var(--magenta)}
-.plink.primary:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-2px)}
-.plink.outline{background:white;color:var(--ink);border:1.5px solid var(--ink)}
-.plink.outline:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
-#skills{background:var(--navy);color:var(--cream)}
-#skills .s-number{color:var(--magenta-light)}
-#skills .s-label{color:var(--magenta-light)}
-#skills .s-title{color:white}
-.skills-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
-.sg-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--dusty-light);margin-bottom:1rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.1)}
-.skill-tag{display:inline-block;font-size:0.77rem;padding:0.3rem 0.75rem;border:1px solid rgba(184,206,218,0.3);border-radius:100px;color:rgba(250,247,242,0.75);margin:0.2rem 0.2rem 0.2rem 0;transition:all 0.2s}
-.skill-tag:hover{background:rgba(122,158,181,0.25);border-color:var(--dusty-light);color:white}
-#contact{background:var(--magenta-pale);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden}
-#contact::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,var(--magenta-light) 1.5px,transparent 1.5px);background-size:30px 30px;opacity:0.2;pointer-events:none}
-#contact > *{position:relative}
-#contact .s-title{max-width:480px}
-.contact-note{font-size:0.92rem;color:var(--muted);max-width:400px;margin-bottom:2rem}
-.contact-row{display:flex;gap:0.9rem;flex-wrap:wrap;justify-content:center}
-.cbtn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.8rem 1.8rem;border-radius:100px;font-size:0.82rem;font-weight:500;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:white;transition:all 0.22s}
-.cbtn:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
-.cbtn.filled{background:var(--dusty);color:white;border-color:var(--dusty)}
-.cbtn.filled:hover{background:var(--navy);border-color:var(--navy)}
-footer{padding:1.4rem 4rem;background:var(--navy);display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:rgba(250,247,242,0.35)}
-.travel-overlay{position:fixed;inset:0;z-index:1000;background:var(--cream);display:none;flex-direction:column;animation:fadeInOverlay 0.5s ease}
-.travel-overlay.active{display:flex}
-@keyframes fadeInOverlay{from{opacity:0}to{opacity:1}}
-.travel-header{padding:1.3rem 3rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--dusty-pale);background:rgba(250,247,242,0.95);backdrop-filter:blur(10px);position:relative;z-index:10}
-.travel-back{font-size:0.78rem;letter-spacing:0.1em;color:var(--ink);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s}
-.travel-back:hover{color:var(--magenta)}
-.travel-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;font-style:italic}
-.travel-title em{color:var(--magenta);font-weight:500}
-.travel-counter{font-size:0.75rem;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase}
-.travel-counter strong{color:var(--magenta);font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-right:0.3rem}
-.travel-map-area{flex:1;position:relative;overflow:auto;background:var(--cream);padding:2rem;display:flex;align-items:center;justify-content:center}
-.world-map-wrap{position:relative;width:100%;max-width:1100px;aspect-ratio:652/383}
-.world-map-img{width:100%;height:100%;display:block;object-fit:contain;user-select:none;-webkit-user-drag:none;pointer-events:none}
-.pin{position:absolute;transform:translate(-50%,-50%);cursor:default;transition:transform 0.2s;width:14px;height:14px}
-.pin.has-photo{cursor:pointer;width:18px;height:18px}
-.pin:hover{transform:translate(-50%,-50%) scale(1.35);z-index:5}
-.pin-dot{position:absolute;inset:0;border-radius:50%;background:var(--dusty);border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.2)}
-.pin.has-photo .pin-dot{background:var(--magenta);border-width:2.5px;box-shadow:0 2px 8px rgba(184,76,110,0.5)}
-.pin-pulse{position:absolute;inset:0;border-radius:50%;background:var(--magenta);opacity:0;animation:pulseRing 2.2s ease-out infinite;pointer-events:none}
-@keyframes pulseRing{0%{transform:scale(0.6);opacity:0.55}100%{transform:scale(2.4);opacity:0}}
-.pin-tooltip{position:fixed;pointer-events:none;background:white;border:1.5px solid var(--magenta);border-radius:10px;padding:0.6rem 0.9rem;box-shadow:0 8px 22px rgba(0,0,0,0.15);z-index:1050;display:none;transform:translate(-50%,-115%);min-width:140px;max-width:220px}
-.pin-tooltip.visible{display:block}
-.pin-tooltip-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--magenta);line-height:1.2;margin-bottom:0.2rem}
-.pin-tooltip-note{font-size:0.74rem;color:var(--muted);letter-spacing:0.02em;line-height:1.4}
-.pin-tooltip-hint{font-size:0.62rem;color:var(--magenta);margin-top:0.4rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;display:none}
-.travel-legend{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);padding:0.85rem 1.1rem;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,0.08);font-size:0.75rem;display:flex;flex-direction:column;gap:0.45rem;color:var(--ink);border:1px solid var(--dusty-pale)}
-.travel-legend-row{display:flex;align-items:center;gap:0.55rem}
-.legend-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;border:1.5px solid white;box-shadow:0 0 0 1px rgba(0,0,0,0.06)}
-.legend-photo{background:var(--magenta)}
-.legend-visited{background:var(--dusty)}
-.travel-instruction{position:absolute;top:1.5rem;right:1.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);padding:0.6rem 1rem;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,0.08);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:var(--magenta);border:1px solid var(--magenta-pale)}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kashish Balan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --cream:#faf7f2;
+      --warm:#f5efe4;
+      --dusty:#7a9eb5;
+      --dusty-light:#b8ceda;
+      --dusty-pale:#e4edf3;
+      --navy:#1e3a52;
+      --magenta:#b84c6e;
+      --magenta-light:#dfa0b4;
+      --magenta-pale:#f8eaf0;
+      --ink:#252320;
+      --muted:#7a6f67;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-thumb{background:var(--dusty-light);border-radius:3px}
 
-/* Photo lightbox */
-.photo-lightbox{position:fixed;inset:0;z-index:1100;background:rgba(30,58,82,0.88);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:2rem;animation:fadeInOverlay 0.3s ease}
-.photo-lightbox.active{display:flex}
-.photo-lightbox-inner{position:relative;max-width:min(90vw,720px);max-height:88vh;background:white;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.5);display:flex;flex-direction:column}
-.photo-lightbox-inner img{display:block;width:100%;max-height:72vh;object-fit:contain;background:var(--cream)}
-.photo-lightbox-caption{padding:1rem 1.5rem;border-top:1px solid var(--dusty-pale)}
-.lightbox-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--magenta);margin-bottom:0.2rem}
-.lightbox-note{font-size:0.88rem;color:var(--muted)}
-.photo-lightbox-close{position:absolute;top:0.8rem;right:0.8rem;width:36px;height:36px;border-radius:50%;border:none;background:white;color:var(--ink);font-size:1.6rem;line-height:1;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.15);display:flex;align-items:center;justify-content:center;z-index:2;transition:transform 0.2s}
-.photo-lightbox-close:hover{transform:scale(1.1);color:var(--magenta)}
-.reveal{opacity:1;transform:translateY(0);transition:opacity 0.65s ease,transform 0.65s ease}
-.reveal-d1{transition-delay:0.1s}.reveal-d2{transition-delay:0.2s}.reveal-d3{transition-delay:0.3s}
-@media(max-width:880px){
-  nav{padding:1rem 1.5rem}.nav-links{gap:1.5rem}
-  #hero{grid-template-columns:1fr}
-  .hero-right{height:60vw;padding:3rem 1.5rem 0}
-  .map-callout{left:auto;right:10px;top:10px;transform:rotate(-4deg)}
-  .map-callout-text{font-size:1.1rem;padding:0.4rem 0.8rem}
-  .map-callout-arrow{display:none}
-  section{padding:3.5rem 1.5rem}
-  .divider{margin:0 1.5rem}
-  .about-wrap{grid-template-columns:1fr;gap:2rem}
-  .about-photo{aspect-ratio:3/2;object-position:center 20%}
-  .travel-teaser{grid-template-columns:1fr;text-align:center}
-  .travel-mini-map{margin:0 auto}
-  .exp-item{grid-template-columns:1fr;gap:0.4rem}
-  .exp-logo{width:38px;height:38px}
-  .proj-row{grid-template-columns:1fr;gap:1.4rem;padding:1.4rem}
-  footer{padding:1.2rem 1.5rem;flex-direction:column;gap:0.3rem}
-  .travel-header{padding:1rem 1.5rem;flex-wrap:wrap;gap:0.5rem}
-  .travel-title{font-size:1.05rem}
-}
-</style>
+    /* NAV */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1.1rem 3.5rem;
+      background:rgba(250,247,242,0.93);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--dusty-pale);
+    }
+    .nav-name{
+      font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;
+      letter-spacing:0.06em;color:var(--ink);text-decoration:none;
+    }
+    .nav-links{display:flex;gap:2.2rem;list-style:none}
+    .nav-links a{
+      font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;
+      color:var(--muted);text-decoration:none;transition:color 0.2s;font-family:'DM Sans',sans-serif;
+    }
+    .nav-links a:hover{color:var(--magenta)}
+
+    /* HERO */
+    #hero{
+      min-height:100vh;
+      display:grid;grid-template-columns:1.1fr 0.9fr;
+      padding-top:4rem;
+    }
+    .hero-left{
+      display:flex;flex-direction:column;justify-content:center;
+      padding:5rem 3rem 5rem 4rem;
+      background:var(--dusty-pale);
+      position:relative;
+    }
+    /* polka dot overlay on hero */
+    .hero-left::before{
+      content:'';
+      position:absolute;inset:0;
+      background-image:radial-gradient(circle, var(--dusty-light) 1.5px, transparent 1.5px);
+      background-size:28px 28px;
+      opacity:0.35;
+      pointer-events:none;
+    }
+    .hero-left::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--dusty),var(--magenta));
+    }
+    .hero-eyebrow{
+      position:relative;
+      font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--magenta);margin-bottom:1.2rem;
+      
+    }
+    h1.hero-name{
+      position:relative;
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(3.5rem,6.5vw,5.8rem);
+      font-weight:300;line-height:1.0;letter-spacing:-0.01em;
+      margin-bottom:1rem;
+      
+    }
+    h1.hero-name em{font-style:italic;color:var(--dusty)}
+    .hero-bio{
+      position:relative;
+      font-size:0.95rem;color:var(--muted);line-height:1.85;
+      max-width:400px;margin-bottom:2rem;
+      
+    }
+    .hero-pills{
+      position:relative;
+      display:flex;flex-wrap:wrap;gap:0.5rem;
+      
+    }
+    .pill{
+      font-size:0.72rem;padding:0.35rem 0.9rem;
+      background:white;border:1.5px solid var(--dusty-light);border-radius:100px;
+      color:var(--dusty);font-weight:500;
+    }
+    .pill:nth-child(even){border-color:var(--magenta-light);color:var(--magenta)}
+    .hero-right{
+      background:var(--magenta-pale);
+      display:flex;align-items:flex-end;justify-content:center;
+      padding:4rem 2.5rem 0;
+      overflow:hidden;
+      position:relative;
+      
+    }
+    .hero-right::before{
+      content:'';
+      position:absolute;inset:0;
+      background-image:radial-gradient(circle, var(--magenta-light) 1.5px, transparent 1.5px);
+      background-size:24px 24px;
+      opacity:0.25;
+      pointer-events:none;
+    }
+    .hero-photo{
+      position:relative;
+      width:100%;max-width:320px;
+      border-radius:6px 6px 0 0;
+      object-fit:cover;object-position:top center;
+      height:70vh;
+      box-shadow:0 -16px 50px rgba(30,58,82,0.12);
+      border:3px solid white;
+      border-bottom:none;
+    }
+
+    /* SECTIONS */
+    section{padding:5.5rem 4rem}
+    .s-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--magenta);margin-bottom:0.5rem}
+    .s-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;
+      line-height:1.15;letter-spacing:-0.01em;margin-bottom:2.5rem;
+    }
+    .s-title em{font-style:italic;color:var(--dusty)}
+    .divider{border:none;border-top:1px solid var(--dusty-pale);margin:0 4rem}
+
+    /* ABOUT */
+    #about{background:var(--cream)}
+    .about-wrap{display:grid;grid-template-columns:300px 1fr;gap:4rem;align-items:start}
+    .about-photo-col{display:flex;flex-direction:column;gap:1rem}
+    .about-photo{
+      width:100%;aspect-ratio:4/5;
+      object-fit:cover;object-position:top;
+      border-radius:6px;
+      border:3px solid white;
+      box-shadow:10px 10px 0 var(--dusty-pale);
+    }
+    .about-quick{
+      background:var(--dusty-pale);border-radius:8px;
+      padding:1.2rem 1.4rem;
+      font-size:0.82rem;color:var(--muted);line-height:1.9;
+    }
+    .about-quick strong{color:var(--navy);font-weight:500}
+    .aq-item{display:flex;flex-direction:column;padding:0.55rem 0;border-bottom:1px solid rgba(122,158,181,0.15)}
+    .aq-item:last-child{border-bottom:none}
+    .aq-label{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--dusty);font-weight:600;margin-bottom:0.1rem}
+    .aq-val{font-size:0.88rem;color:var(--ink);font-weight:400}
+    .about-content p{font-size:0.97rem;color:var(--muted);line-height:1.9;margin-bottom:1rem}
+    .about-content p strong{color:var(--ink);font-weight:500}
+
+    .interests-list{display:flex;align-items:center;flex-wrap:wrap;gap:0.4rem;margin-top:1.5rem}
+    .interests-label{font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink)}
+    .interests-label-sep{color:var(--muted);margin:0 0.3rem}
+    .interests-item{font-size:0.88rem;color:var(--muted)}
+    .interests-sep{color:var(--dusty-light);font-size:1rem;margin:0 0.1rem}
+
+    /* EXPERIENCE */
+    #experience{background:var(--navy)}
+    #experience .s-label{color:var(--magenta-light)}
+    #experience .s-title{color:white;font-size:clamp(2.4rem,4vw,3.4rem)}
+    .exp-list{display:flex;flex-direction:column}
+    .exp-item{
+      display:grid;grid-template-columns:180px 1fr;gap:2.5rem;
+      padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+    .exp-item:last-child{border-bottom:none}
+    .exp-meta{display:flex;gap:0.9rem;align-items:flex-start}
+    .exp-logo{
+      flex-shrink:0;
+      width:44px;height:44px;
+      border-radius:8px;
+      background:white;
+      display:flex;align-items:center;justify-content:center;
+      padding:5px;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 2px 8px rgba(0,0,0,0.18);
+      overflow:hidden;
+    }
+    .exp-logo img{width:100%;height:100%;object-fit:contain}
+    .exp-logo-fallback{
+      width:100%;height:100%;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--dusty),var(--magenta));
+      color:white;border-radius:5px;
+      font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1rem;
+    }
+    .exp-meta-text{flex:1;min-width:0}
+    .exp-date{font-size:0.72rem;color:var(--dusty-light);letter-spacing:0.06em;margin-bottom:0.3rem;font-weight:500}
+    .exp-org{font-size:0.75rem;color:rgba(250,247,242,0.45);line-height:1.4}
+    .exp-role{
+      font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;
+      color:white;margin-bottom:0.2rem;
+    }
+    .exp-place{font-size:0.78rem;color:var(--magenta-light);margin-bottom:0.5rem;font-weight:500}
+    .exp-bullets{list-style:none;padding:0}
+    .exp-bullets li{
+      font-size:0.82rem;color:rgba(250,247,242,0.65);line-height:1.7;
+      padding-left:1.1rem;position:relative;margin-bottom:0.2rem;
+    }
+    .exp-bullets li::before{content:'●';position:absolute;left:0;font-size:0.4rem;top:0.5rem;color:var(--magenta-light)}
+
+    /* PROJECTS */
+    #projects{background:var(--cream)}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+    .proj-card{
+      background:white;
+      border:1px solid var(--dusty-pale);border-radius:12px;
+      padding:1.75rem;transition:all 0.25s;
+      position:relative;overflow:hidden;
+    }
+    .proj-card:nth-child(even){border-color:var(--magenta-pale)}
+    /* polka dot corner accent */
+    .proj-card::before{
+      content:'';
+      position:absolute;top:0;right:0;
+      width:80px;height:80px;
+      background-image:radial-gradient(circle, var(--dusty-pale) 2px, transparent 2px);
+      background-size:12px 12px;
+      opacity:0.8;
+    }
+    .proj-card:nth-child(even)::before{
+      background-image:radial-gradient(circle, var(--magenta-pale) 2px, transparent 2px);
+    }
+    .proj-card:hover{box-shadow:0 12px 36px rgba(122,158,181,0.15);transform:translateY(-4px)}
+    .proj-card:nth-child(even):hover{box-shadow:0 12px 36px rgba(184,76,110,0.1)}
+    .proj-num{
+      font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;
+      color:var(--dusty-pale);line-height:1;margin-bottom:0.5rem;
+    }
+    .proj-card:nth-child(even) .proj-num{color:var(--magenta-pale)}
+    .proj-title{
+      font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;
+      color:var(--ink);margin-bottom:0.4rem;
+    }
+    .proj-desc{font-size:0.83rem;color:var(--muted);line-height:1.7;margin-bottom:0.9rem}
+    .proj-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.9rem}
+    .ptag{
+      font-size:0.67rem;padding:0.2rem 0.6rem;
+      background:var(--dusty-pale);border-radius:100px;
+      color:var(--dusty);font-weight:500;border:none;
+    }
+    .proj-card:nth-child(even) .ptag{background:var(--magenta-pale);color:var(--magenta)}
+    .proj-link{
+      font-size:0.78rem;font-weight:500;color:var(--dusty);
+      text-decoration:none;letter-spacing:0.04em;transition:letter-spacing 0.2s;
+    }
+    .proj-card:nth-child(even) .proj-link{color:var(--magenta)}
+    .proj-link:hover{letter-spacing:0.09em}
+
+    /* SKILLS — navy background, clean */
+    #skills{background:var(--navy);color:var(--cream)}
+    #skills .s-label{color:var(--magenta-light)}
+    #skills .s-title{color:white}
+    .skills-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
+    .sg-title{
+      font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;
+      color:var(--dusty-light);margin-bottom:1rem;
+      padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+    .skill-tag{
+      display:inline-block;
+      font-size:0.77rem;padding:0.3rem 0.75rem;
+      border:1px solid rgba(184,206,218,0.3);border-radius:100px;
+      color:rgba(250,247,242,0.75);margin:0.2rem 0.2rem 0.2rem 0;
+      transition:all 0.2s;cursor:default;
+    }
+    .skill-tag:hover{background:rgba(122,158,181,0.25);border-color:var(--dusty-light);color:white}
+
+    /* CONTACT */
+    #contact{
+      background:var(--magenta-pale);
+      display:flex;flex-direction:column;align-items:center;text-align:center;
+      position:relative;overflow:hidden;
+    }
+    /* polka dots bg on contact */
+    #contact::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle, var(--magenta-light) 1.5px, transparent 1.5px);
+      background-size:30px 30px;
+      opacity:0.2;pointer-events:none;
+    }
+    #contact > *{position:relative}
+    #contact .s-title{max-width:480px}
+    .contact-note{font-size:0.92rem;color:var(--muted);max-width:400px;margin-bottom:2rem}
+    .contact-row{display:flex;gap:0.9rem;flex-wrap:wrap;justify-content:center}
+    .cbtn{
+      display:inline-flex;align-items:center;gap:0.4rem;
+      padding:0.8rem 1.8rem;border-radius:100px;
+      font-size:0.82rem;font-weight:500;text-decoration:none;
+      border:1.5px solid var(--ink);color:var(--ink);background:white;
+      transition:all 0.22s;
+    }
+    .cbtn:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
+    .cbtn.filled{background:var(--dusty);color:white;border-color:var(--dusty)}
+    .cbtn.filled:hover{background:var(--navy);border-color:var(--navy)}
+
+    footer{
+      padding:1.4rem 4rem;background:var(--navy);
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:0.73rem;color:rgba(250,247,242,0.35);
+    }
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .reveal{opacity:1;transform:translateY(0);transition:opacity 0.65s ease,transform 0.65s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-d1{transition-delay:0.1s}.reveal-d2{transition-delay:0.2s}.reveal-d3{transition-delay:0.3s}
+    /* fallback: if JS fails, show everything */
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; } }
+
+    @media(max-width:880px){
+      nav{padding:1rem 1.5rem}
+      .nav-links{gap:1.5rem}
+      #hero{grid-template-columns:1fr}
+      .hero-right{height:55vw;padding:3rem 1.5rem 0}
+      section{padding:3.5rem 1.5rem}
+      .divider{margin:0 1.5rem}
+      .about-wrap{grid-template-columns:1fr;gap:2rem}
+      .about-photo{aspect-ratio:3/2;object-position:center 20%}
+      .exp-item{grid-template-columns:1fr;gap:0.4rem}
+      .exp-logo{width:38px;height:38px}
+      .interests-grid{grid-template-columns:1fr}
+      footer{padding:1.2rem 1.5rem;flex-direction:column;gap:0.3rem}
+    }
+  </style>
 </head>
 <body>
 
@@ -217,21 +355,12 @@ footer{padding:1.4rem 4rem;background:var(--navy);display:flex;justify-content:s
 
 <section id="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Cornell University &middot; CS '28</p>
-    <h1 class="hero-name">Kashish<span class="last">Balan</span></h1>
-    <div class="hero-flourish">&#10022; hi, nice to meet you</div>
-    <p class="hero-bio">Studying Computer Science, Operations Research, and Business at Cornell &mdash; drawn to the places where technology meets real decisions. I'm interested in building software that solves meaningful problems, whether that's in healthcare, finance, or quantitative research.</p>
+    <p class="hero-eyebrow">Cornell University · CS '28</p>
+    <h1 class="hero-name">Hi, I'm<br><em>Kashish</em> ✦</h1>
+    <p class="hero-bio">Studying Computer Science, Operations Research, and Business at Cornell — drawn to the places where technology meets real decisions. I'm interested in building software that solves meaningful problems, whether that's in healthcare, finance, or quantitative research.</p>
   </div>
   <div class="hero-right">
-    <div class="hero-photo-wrap">
-      <div class="map-callout" id="open-travel" role="button" tabindex="0">
-        <div class="map-callout-text">click here!</div>
-        <svg class="map-callout-arrow" viewBox="0 0 55 42">
-          <path d="M 5 5 Q 18 28, 40 32 M 33 23 L 40 32 L 30 33"/>
-        </svg>
-      </div>
-      <img class="hero-photo" src="hero.jpeg" alt="Kashish Balan" id="hero-photo-trigger"/>
-    </div>
+    <img class="hero-photo" src="hero.jpeg" alt="Kashish Balan"/>
   </div>
 </section>
 
@@ -244,55 +373,26 @@ footer{padding:1.4rem 4rem;background:var(--navy);display:flex;justify-content:s
       <div class="about-quick">
         <div class="aq-item"><span class="aq-label">Location</span><span class="aq-val">Chicago, IL</span></div>
         <div class="aq-item"><span class="aq-label">Degree</span><span class="aq-val">Computer Science</span></div>
-        <div class="aq-item"><span class="aq-label">Minors</span><span class="aq-val">Operations Research &amp; Information Engineering &amp; Business</span></div>
+        <div class="aq-item"><span class="aq-label">Minors</span><span class="aq-val">Operations Research & Information Engineering &amp; Business</span></div>
         <div class="aq-item"><span class="aq-label">Email</span><span class="aq-val" id="email-about"></span></div>
       </div>
     </div>
     <div class="about-content reveal reveal-d1">
-      <div class="s-number">01</div>
       <p class="s-label">About Me</p>
       <h2 class="s-title">A curious builder <em>and explorer</em></h2>
-      <p>I'm a <strong>student at Cornell</strong> studying Computer Science with minors in Operations Research &amp; Information Engineering and Business. I love the intersection of technology, learning about markets, and real-world impact.</p>
-      <p>I grew up in <strong>Hong Kong</strong>, which shaped how I see the world. I speak <strong>Mandarin</strong> and have travelled to nearly every country &mdash; Africa is next on the list.</p>
+      <p>I'm a <strong>student at Cornell</strong> studying Computer Science with minors in Operations Research & Information Engineering and Business. I love the intersection of technology, learning about markets, and real-world impact.</p>
+      <p>I grew up in <strong>Hong Kong</strong>, which shaped how I see the world. I speak <strong>Mandarin</strong> and have travelled to nearly every country — Africa is next on the list.</p>
       <p>Outside of class I'm building a React.js telehealth platform with <strong>Cornell Engineering World Health</strong>, and using tech for social good with <strong>Hack4Impact</strong>.</p>
       <div class="interests-list">
         <span class="interests-label">Interests</span>
-        <span class="interests-label-sep">&mdash;</span>
+        <span class="interests-label-sep">—</span>
         <span class="interests-item">Exploring Coffee Shops</span>
-        <span class="interests-sep">&middot;</span>
+        <span class="interests-sep">·</span>
         <span class="interests-item">Travelling</span>
-        <span class="interests-sep">&middot;</span>
+        <span class="interests-sep">·</span>
         <span class="interests-item">Taekwondo</span>
-        <span class="interests-sep">&middot;</span>
+        <span class="interests-sep">·</span>
         <span class="interests-item">Board Games</span>
-      </div>
-
-      <div class="travel-teaser" id="travel-teaser" role="button" tabindex="0">
-        <div class="travel-mini-map">
-          <svg viewBox="0 0 200 110">
-            <path class="mini-land" d="M 18 22 L 50 16 L 70 18 L 78 32 L 70 50 L 55 58 L 35 56 L 22 48 L 14 36 Z"/>
-            <path class="mini-land skipped" d="M 55 65 L 72 62 L 78 78 L 70 96 L 60 100 L 52 88 L 50 74 Z"/>
-            <path class="mini-land" d="M 96 26 L 116 22 L 122 36 L 112 44 L 100 42 Z"/>
-            <path class="mini-land skipped" d="M 104 48 L 122 46 L 130 60 L 124 82 L 110 92 L 100 78 L 98 60 Z"/>
-            <path class="mini-land" d="M 122 20 L 168 16 L 184 28 L 180 46 L 158 52 L 130 48 L 122 38 Z"/>
-            <path class="mini-land" d="M 152 56 L 168 54 L 172 66 L 158 68 Z"/>
-            <path class="mini-land" d="M 168 78 L 186 76 L 188 88 L 172 90 Z"/>
-            <circle class="mini-pin" cx="40" cy="38" r="2"/>
-            <circle class="mini-pin" cx="105" cy="32" r="2"/>
-            <circle class="mini-pin" cx="115" cy="30" r="2"/>
-            <circle class="mini-pin" cx="155" cy="32" r="2"/>
-            <circle class="mini-pin" cx="170" cy="28" r="2"/>
-            <circle class="mini-pin" cx="178" cy="82" r="2"/>
-            <circle class="mini-pin" cx="162" cy="62" r="2"/>
-            <circle class="mini-pin" cx="40" cy="22" r="2"/>
-            <circle class="mini-pin" cx="50" cy="48" r="2"/>
-          </svg>
-        </div>
-        <div class="travel-teaser-content">
-          <div class="travel-teaser-title">my <em>travel map</em> &#10022;</div>
-          <div class="travel-teaser-sub">35+ countries on five continents &mdash; pins update as I go. Africa &amp; South America still to come.</div>
-        </div>
-        <div class="travel-teaser-cta">explore &rarr;</div>
       </div>
     </div>
   </div>
@@ -300,11 +400,6 @@ footer{padding:1.4rem 4rem;background:var(--navy);display:flex;justify-content:s
 
 <hr class="divider"/>
 
-  
-
-
-
-  
 <section id="experience">
   <p class="s-label reveal">Work & Leadership</p>
   <h2 class="s-title reveal">Experience</h2>
@@ -340,142 +435,23 @@ footer{padding:1.4rem 4rem;background:var(--navy);display:flex;justify-content:s
 
 <hr class="divider"/>
 
-<section id="projects">
-  <div class="s-number reveal">03</div>
-  <p class="s-label reveal">My Work</p>
-  <h2 class="s-title reveal">Projects</h2>
-
-  <div class="proj-row featured reveal">
-    <div class="proj-img-wrap">
-      <img src="medexplain.png" alt="MedExplain CMS dashboard"/>
-    </div>
-    <div class="proj-content">
-      <span class="proj-badge">&#9733; Featured Project</span>
-      <h3>Med<em>Explain</em></h3>
-      <p class="proj-sub">Health-equity CMS &middot; Cornell Hack4Impact</p>
-      <p class="proj-desc">A full-stack content management system for a health-equity nonprofit publishing accessible, evidence-based medical information. I built admin dashboard features &mdash; author management, search and filter with Algolia, bulk article editing, assessment-question authoring, and subcategory tagging &mdash; to streamline delivery of care content to underserved patient communities.</p>
-      <div class="proj-tags">
-        <span class="ptag">JavaScript</span>
-        <span class="ptag">React</span>
-        <span class="ptag">Algolia</span>
-        <span class="ptag">Azure</span>
-        <span class="ptag">Node.js</span>
-      </div>
-      <div class="proj-links">
-        <a href="https://github.com/cornellh4i/MedExplain" target="_blank" class="plink primary">View on GitHub &rarr;</a>
-        <a href="https://www.cornellh4i.org/" target="_blank" class="plink outline">Hack4Impact</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="proj-row reveal">
-    <div class="proj-img-wrap">
-      <div class="proj-img-placeholder">
-        <div class="proj-img-placeholder-icon">&#127757;</div>
-        <div class="proj-img-placeholder-text">Nizh&oacute;n&iacute;go &Iacute;&iacute;n&aacute;<br/><span style="font-size:0.78rem;opacity:0.7">community wellness hub</span></div>
-      </div>
-    </div>
-    <div class="proj-content">
-      <h3>Nizh&oacute;n&iacute;go <em>&Iacute;&iacute;n&aacute;</em></h3>
-      <p class="proj-sub">Telehealth platform &middot; Cornell Engineering World Health</p>
-      <p class="proj-desc">A community-centered digital wellness hub designed for the Navajo Nation, where over 50% of households lack broadband. The platform integrates clinical resources, culturally grounded knowledge, and local care information into one accessible space &mdash; blending digital health tools with Din&eacute; principles like H&oacute;zh&oacute; (balance) and K'&eacute; (kinship). I'm helping build the React.js interface around earth-tone palettes, circular layouts, and low-bandwidth, mobile-first design so it works in resource-limited settings.</p>
-      <div class="proj-tags">
-        <span class="ptag">React.js</span>
-        <span class="ptag">Healthcare Equity</span>
-        <span class="ptag">Mobile-First</span>
-        <span class="ptag">Indigenous Communities</span>
-      </div>
-      <div class="proj-links">
-        <a href="Software_Final_Poster.pdf" target="_blank" class="plink primary">View Research Poster &rarr;</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="proj-row reveal">
-    <div class="proj-img-wrap">
-      <div class="proj-img-placeholder">
-        <div class="proj-img-placeholder-icon">&#128338;</div>
-        <div class="proj-img-placeholder-text">Hoursly<br/><span style="font-size:0.78rem;opacity:0.7">office-hours tracker</span></div>
-      </div>
-    </div>
-    <div class="proj-content">
-      <h3>Hours<em>ly</em></h3>
-      <p class="proj-sub">Office-hours tracker &middot; for Cornell students</p>
-      <p class="proj-desc">A centralized app that helps Cornell students quickly find and track TA office hours across all their courses. Built around a Node.js backend with searchable schedules, course-level filters, and real-time availability updates so students can stop digging through course pages and just see what's open right now.</p>
-      <div class="proj-tags">
-        <span class="ptag">Back-End</span>
-        <span class="ptag">API Development</span>
-        <span class="ptag">Node.js</span>
-      </div>
-      <div class="proj-links">
-        <a href="https://github.com/kashishbalan/HourslyBackend" target="_blank" class="plink primary">View on GitHub &rarr;</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="proj-row reveal">
-    <div class="proj-img-wrap">
-      <div class="proj-img-placeholder">
-        <div class="proj-img-placeholder-icon">&#127908;</div>
-        <div class="proj-img-placeholder-text">Concertify<br/><span style="font-size:0.78rem;opacity:0.7">Spotify-powered concert finder</span></div>
-      </div>
-    </div>
-    <div class="proj-content">
-      <h3>Concert<em>ify</em></h3>
-      <p class="proj-sub">Spotify extension &middot; concert discovery</p>
-      <p class="proj-desc">A Spotify extension that lets users save upcoming concerts for their top artists, explore albums and playlists, and discover local events &mdash; all in one place. Designed in Figma and built with the Spotify API on a Firebase backend, so personal listening history drives what shows up in your concert feed.</p>
-      <div class="proj-tags">
-        <span class="ptag">Figma</span>
-        <span class="ptag">Firebase</span>
-        <span class="ptag">Spotify API</span>
-      </div>
-      <div class="proj-links">
-        <a href="https://drive.google.com/file/d/1ODG_oL6ivqcrChpEZGZfJ6gHGpsCVhkx/view" target="_blank" class="plink primary">Watch Demo &rarr;</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="proj-row reveal">
-    <div class="proj-img-wrap">
-      <div class="proj-img-placeholder">
-        <div class="proj-img-placeholder-icon">&#129504;</div>
-        <div class="proj-img-placeholder-text">Expert Classifier<br/><span style="font-size:0.78rem;opacity:0.7">NLP research</span></div>
-      </div>
-    </div>
-    <div class="proj-content">
-      <h3>Expert <em>Classifier</em></h3>
-      <p class="proj-sub">NLP research &middot; MIT Lincoln Laboratory</p>
-      <p class="proj-desc">An NLP model classifying experts vs. non-experts on StackExchange using Naive Bayes and text-style features. I built a sentiment-analysis program as an additional classification signal, exploring how writing tone and structure correlate with domain expertise.</p>
-      <div class="proj-tags">
-        <span class="ptag">Python</span>
-        <span class="ptag">Naive Bayes</span>
-        <span class="ptag">NLP</span>
-      </div>
-      <div class="proj-links">
-        <a href="Expert_Classifier_Presentation.pdf" target="_blank" class="plink primary">View Presentation &rarr;</a>
-      </div>
-    </div>
-  </div>
-</section>
+<section id="projects"> <div class="s-number reveal">03</div> <p class="s-label reveal">My Work</p> <h2 class="s-title reveal">Projects</h2> <div class="proj-row featured reveal"> <div class="proj-img-wrap"> <img src="medexplain.png" alt="MedExplain CMS dashboard"/> </div> <div class="proj-content"> <span class="proj-badge">&#9733; Featured Project</span> <h3>Med<em>Explain</em></h3> <p class="proj-sub">Health-equity CMS &middot; Cornell Hack4Impact</p> <p class="proj-desc">A full-stack content management system for a health-equity nonprofit publishing accessible, evidence-based medical information. I built admin dashboard features &mdash; author management, search and filter with Algolia, bulk article editing, assessment-question authoring, and subcategory tagging &mdash; to streamline delivery of care content to underserved patient communities.</p> <div class="proj-tags"> <span class="ptag">JavaScript</span> <span class="ptag">React</span> <span class="ptag">Algolia</span> <span class="ptag">Azure</span> <span class="ptag">Node.js</span> </div> <div class="proj-links"> <a href="https://github.com/cornellh4i/MedExplain" target="_blank" class="plink primary">View on GitHub &rarr;</a> <a href="https://www.cornellh4i.org/" target="_blank" class="plink outline">Hack4Impact</a> </div> </div> </div> <div class="proj-row reveal"> <div class="proj-img-wrap"> <div class="proj-img-placeholder"> <div class="proj-img-placeholder-icon">&#127757;</div> <div class="proj-img-placeholder-text">Nizh&oacute;n&iacute;go &Iacute;&iacute;n&aacute;<br/><span style="font-size:0.78rem;opacity:0.7">community wellness hub</span></div> </div> </div> <div class="proj-content"> <h3>Nizh&oacute;n&iacute;go <em>&Iacute;&iacute;n&aacute;</em></h3> <p class="proj-sub">Telehealth platform &middot; Cornell Engineering World Health</p> <p class="proj-desc">A community-centered digital wellness hub designed for the Navajo Nation, where over 50% of households lack broadband. The platform integrates clinical resources, culturally grounded knowledge, and local care information into one accessible space &mdash; blending digital health tools with Din&eacute; principles like H&oacute;zh&oacute; (balance) and K'&eacute; (kinship). I'm helping build the React.js interface around earth-tone palettes, circular layouts, and low-bandwidth, mobile-first design so it works in resource-limited settings.</p> <div class="proj-tags"> <span class="ptag">React.js</span> <span class="ptag">Healthcare Equity</span> <span class="ptag">Mobile-First</span> <span class="ptag">Indigenous Communities</span> </div> <div class="proj-links"> <a href="Software_Final_Poster.pdf" target="_blank" class="plink primary">View Research Poster &rarr;</a> </div> </div> </div> <div class="proj-row reveal"> <div class="proj-img-wrap"> <div class="proj-img-placeholder"> <div class="proj-img-placeholder-icon">&#128338;</div> <div class="proj-img-placeholder-text">Hoursly<br/><span style="font-size:0.78rem;opacity:0.7">office-hours tracker</span></div> </div> </div> <div class="proj-content"> <h3>Hours<em>ly</em></h3> <p class="proj-sub">Office-hours tracker &middot; for Cornell students</p> <p class="proj-desc">A centralized app that helps Cornell students quickly find and track TA office hours across all their courses. Built around a Node.js backend with searchable schedules, course-level filters, and real-time availability updates so students can stop digging through course pages and just see what's open right now.</p> <div class="proj-tags"> <span class="ptag">Back-End</span> <span class="ptag">API Development</span> <span class="ptag">Node.js</span> </div> <div class="proj-links"> <a href="https://github.com/kashishbalan/HourslyBackend" target="_blank" class="plink primary">View on GitHub &rarr;</a> </div> </div> </div> <div class="proj-row reveal"> <div class="proj-img-wrap"> <div class="proj-img-placeholder"> <div class="proj-img-placeholder-icon">&#127908;</div> <div class="proj-img-placeholder-text">Concertify<br/><span style="font-size:0.78rem;opacity:0.7">Spotify-powered concert finder</span></div> </div> </div> <div class="proj-content"> <h3>Concert<em>ify</em></h3> <p class="proj-sub">Spotify extension &middot; concert discovery</p> <p class="proj-desc">A Spotify extension that lets users save upcoming concerts for their top artists, explore albums and playlists, and discover local events &mdash; all in one place. Designed in Figma and built with the Spotify API on a Firebase backend, so personal listening history drives what shows up in your concert feed.</p> <div class="proj-tags"> <span class="ptag">Figma</span> <span class="ptag">Firebase</span> <span class="ptag">Spotify API</span> </div> <div class="proj-links"> <a href="https://drive.google.com/file/d/1ODG_oL6ivqcrChpEZGZfJ6gHGpsCVhkx/view" target="_blank" class="plink primary">Watch Demo &rarr;</a> </div> </div> </div> <div class="proj-row reveal"> <div class="proj-img-wrap"> <div class="proj-img-placeholder"> <div class="proj-img-placeholder-icon">&#129504;</div> <div class="proj-img-placeholder-text">Expert Classifier<br/><span style="font-size:0.78rem;opacity:0.7">NLP research</span></div> </div> </div> <div class="proj-content"> <h3>Expert <em>Classifier</em></h3> <p class="proj-sub">NLP research &middot; MIT Lincoln Laboratory</p> <p class="proj-desc">An NLP model classifying experts vs. non-experts on StackExchange using Naive Bayes and text-style features. I built a sentiment-analysis program as an additional classification signal, exploring how writing tone and structure correlate with domain expertise.</p> <div class="proj-tags"> <span class="ptag">Python</span> <span class="ptag">Naive Bayes</span> <span class="ptag">NLP</span> </div> <div class="proj-links"> <a href="Expert_Classifier_Presentation.pdf" target="_blank" class="plink primary">View Presentation &rarr;</a> </div> </div> </div> </section>
 
 <hr class="divider"/>
 
 <section id="skills">
-  <div class="s-number reveal">04</div>
   <p class="s-label reveal">What I Know</p>
   <h2 class="s-title reveal">Skills</h2>
   <div class="skills-wrap reveal">
     <div class="skill-group"><div class="sg-title">Programming Languages</div><span class="skill-tag">Python</span><span class="skill-tag">Java</span><span class="skill-tag">C++</span><span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span><span class="skill-tag">OCaml</span><span class="skill-tag">SQL</span><span class="skill-tag">HTML / CSS</span></div>
-    <div class="skill-group"><div class="sg-title">Frameworks &amp; Libraries</div><span class="skill-tag">React</span><span class="skill-tag">Node.js</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span></div>
-    <div class="skill-group"><div class="sg-title">Tools &amp; Platforms</div><span class="skill-tag">Git</span><span class="skill-tag">Docker</span><span class="skill-tag">Firebase</span><span class="skill-tag">Jupyter Notebook</span><span class="skill-tag">VS Code</span><span class="skill-tag">Azure</span><span class="skill-tag">Google Cloud</span><span class="skill-tag">Algolia</span><span class="skill-tag">Android Studio</span></div>
+    <div class="skill-group"><div class="sg-title">Frameworks & Libraries</div><span class="skill-tag">React</span><span class="skill-tag">Node.js</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span></div>
+    <div class="skill-group"><div class="sg-title">Tools & Platforms</div><span class="skill-tag">Git</span><span class="skill-tag">Docker</span><span class="skill-tag">Firebase</span><span class="skill-tag">Jupyter Notebook</span><span class="skill-tag">VS Code</span><span class="skill-tag">Azure</span><span class="skill-tag">Google Cloud</span><span class="skill-tag">Algolia</span><span class="skill-tag">Android Studio</span></div>
     <div class="skill-group"><div class="sg-title">Human Languages</div><span class="skill-tag">English (Native)</span><span class="skill-tag">Mandarin (Intermediate)</span></div>
   </div>
 </section>
-
 <section id="contact">
-  <div class="s-number reveal">05</div>
   <p class="s-label reveal">Say Hello</p>
-  <h2 class="s-title reveal">Let's <em>Connect</em> &#10022;</h2>
+  <h2 class="s-title reveal">Let's <em>Connect</em> ✦</h2>
   <p class="contact-note reveal">Open to opportunities, collabs, or just a chat about travel and coffee.</p>
   <div class="contact-row reveal">
     <a href="#" id="email-btn" class="cbtn filled">&#x2709; Send me an email</a>
@@ -484,193 +460,58 @@ footer{padding:1.4rem 4rem;background:var(--navy);display:flex;justify-content:s
   </div>
 </section>
 
+
 <footer>
-  <span>&copy; 2026 Kashish Balan</span>
+  <span>&#169; 2026 Kashish Balan</span>
 </footer>
 
-<!-- TRAVEL OVERLAY -->
-<div class="travel-overlay" id="travel-overlay">
-  <div class="travel-header">
-    <button class="travel-back" id="close-travel">&larr; Return Home</button>
-    <div class="travel-title">Places I've <em>been</em> &#10022;</div>
-    <div class="travel-counter"><strong id="visited-count">0</strong>places visited</div>
-  </div>
-  <div class="travel-map-area">
-    <div class="travel-instruction">tap pink pins to see photos &#10022;</div>
-    <div class="world-map-wrap" id="world-map-wrap">
-      <img class="world-map-img" src="world-map.png" alt="watercolor world map"/>
-      <!-- pins get injected here -->
-    </div>
-    <div class="travel-legend">
-      <div class="travel-legend-row"><span class="legend-dot legend-photo"></span>Has photo &mdash; tap to view</div>
-      <div class="travel-legend-row"><span class="legend-dot legend-visited"></span>Visited</div>
-    </div>
-  </div>
-</div>
-
-<div class="photo-lightbox" id="photo-lightbox">
-  <div class="photo-lightbox-inner">
-    <button class="photo-lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
-    <img id="lightbox-img" src="" alt=""/>
-    <div class="photo-lightbox-caption">
-      <div class="lightbox-title" id="lightbox-title"></div>
-      <div class="lightbox-note" id="lightbox-note"></div>
-    </div>
-  </div>
-</div>
-
-<div class="pin-tooltip" id="pin-tooltip">
-  <div class="pin-tooltip-title" id="tt-title">&mdash;</div>
-  <div class="pin-tooltip-note" id="tt-note"></div>
-  <div class="pin-tooltip-hint" id="tt-hint"></div>
-</div>
-
 <script>
-/* ============================================================
-   PIN DATA — positions are PERCENTAGES of the watercolor map.
-   To swap or add photos later, change `i` to a file path.
-============================================================== */
-const MAP_W = 652, MAP_H = 383; /* native size of world-map.png */
-const PINS = [
-  /* PHOTO PINS (magenta, clickable) */
-  { n:'Italy',         xp:49.8, yp:32.0, t:'Cinque Terre, Manarola',     i:'photos/italy.jpeg' },
-  { n:'Netherlands',   xp:47.8, yp:23.0, t:'Amsterdam canals',           i:'photos/netherlands.jpeg' },
-  { n:'France',        xp:46.6, yp:27.0, t:'Maison des Fleurs, Paris',   i:'photos/france.jpeg' },
-  { n:'Greece',        xp:52.2, yp:34.0, t:'Skopelos terraces',          i:'photos/greece.jpeg' },
-  { n:'Chicago',       xp:21.0, yp:30.0, t:'home base \u2726',           i:'photos/chicago.jpeg' },
-  { n:'New York City', xp:25.0, yp:32.0, t:'SoHo strolls',               i:'photos/nyc.jpeg' },
-  { n:'San Francisco', xp:13.0, yp:32.0, t:'Bay Area visits',            i:'photos/sf.jpeg' },
-
-  /* OTHER VISITED COUNTRIES (dusty blue, hover-only) */
-  { n:'China',         xp:76.0, yp:34.0, t:'including Hong Kong (home!)' },
-  { n:'Hong Kong',     xp:78.0, yp:40.0, t:'where I grew up' },
-  { n:'Japan',         xp:86.0, yp:32.0, t:'Tokyo, Kyoto' },
-  { n:'South Korea',   xp:83.0, yp:32.0, t:'Seoul' },
-  { n:'Thailand',      xp:75.0, yp:45.0, t:'Bangkok, beaches' },
-  { n:'Vietnam',       xp:78.0, yp:45.0, t:'Hanoi, Ho Chi Minh' },
-  { n:'Singapore',     xp:77.0, yp:52.0, t:'Marina Bay' },
-  { n:'Malaysia',      xp:76.0, yp:50.0, t:'Kuala Lumpur' },
-  { n:'Indonesia',     xp:81.0, yp:56.0, t:'Bali!' },
-  { n:'Philippines',   xp:84.0, yp:46.0, t:'' },
-  { n:'India',         xp:72.0, yp:42.0, t:'' },
-  { n:'UAE',           xp:66.0, yp:40.0, t:'Dubai' },
-  { n:'Sri Lanka',     xp:72.0, yp:50.0, t:'' },
-  { n:'United Kingdom',xp:46.0, yp:20.0, t:'London \u2726' },
-  { n:'Spain',         xp:45.0, yp:32.0, t:'Barcelona, Madrid' },
-  { n:'Portugal',      xp:43.0, yp:32.0, t:'Lisbon' },
-  { n:'Germany',       xp:50.0, yp:22.0, t:'Berlin, Munich' },
-  { n:'Belgium',       xp:47.5, yp:22.5, t:'Brussels' },
-  { n:'Switzerland',   xp:49.0, yp:27.0, t:'the Alps' },
-  { n:'Austria',       xp:51.0, yp:26.0, t:'Vienna' },
-  { n:'Czech Republic',xp:51.5, yp:23.5, t:'Prague' },
-  { n:'Ireland',       xp:43.5, yp:19.0, t:'Dublin' },
-  { n:'Norway',        xp:51.0, yp:14.4, t:'fjords!' },
-  { n:'Sweden',        xp:52.6, yp:14.4, t:'Stockholm' },
-  { n:'Denmark',       xp:50.0, yp:18.3, t:'Copenhagen' },
-  { n:'Iceland',       xp:46.8, yp:9.9,  t:'northern lights' },
-  { n:'Turkey',        xp:56.0, yp:30.0, t:'Istanbul' },
-  { n:'Canada',        xp:23.0, yp:19.6, t:'Toronto, Vancouver' },
-  { n:'Mexico',        xp:18.0, yp:42.0, t:'Mexico City, Cancun' },
-  { n:'Australia',     xp:88.2, yp:65.3, t:'Sydney, Melbourne' },
-  { n:'New Zealand',   xp:94.3, yp:70.5, t:'Auckland' },
-];
-
-const mapWrap   = document.getElementById('world-map-wrap');
-const tooltip   = document.getElementById('pin-tooltip');
-const ttTitle   = document.getElementById('tt-title');
-const ttNote    = document.getElementById('tt-note');
-const ttHint    = document.getElementById('tt-hint');
-
-/* sort: non-photo first, photo pins on top */
-const sorted = PINS.slice().sort(function(a,b){ return (a.i?1:0) - (b.i?1:0); });
-
-sorted.forEach(function(pin){
-  var el = document.createElement('div');
-  el.className = 'pin' + (pin.i ? ' has-photo' : '');
-  el.style.left = pin.xp + '%';
-  el.style.top  = pin.yp + '%';
-  if (pin.i) el.appendChild(Object.assign(document.createElement('div'),{className:'pin-pulse'}));
-  el.appendChild(Object.assign(document.createElement('div'),{className:'pin-dot'}));
-  el.addEventListener('mouseenter', function(e){ showTooltip(pin, e); });
-  el.addEventListener('mousemove', moveTooltip);
-  el.addEventListener('mouseleave', hideTooltip);
-  if (pin.i) {
-    el.addEventListener('click', function(e){ e.stopPropagation(); openLightbox(pin); });
-  }
-  mapWrap.appendChild(el);
-});
-
-document.getElementById('visited-count').textContent = PINS.length;
-
-function showTooltip(pin, e){
-  ttTitle.textContent = pin.n;
-  ttNote.textContent = pin.t || '';
-  ttHint.style.display = pin.i ? 'block' : 'none';
-  ttHint.textContent = pin.i ? 'tap for photo \u2192' : '';
-  tooltip.classList.add('visible');
-  moveTooltip(e);
-}
-function moveTooltip(e){
-  tooltip.style.left = e.clientX + 'px';
-  tooltip.style.top  = (e.clientY - 14) + 'px';
-}
-function hideTooltip(){ tooltip.classList.remove('visible'); }
-
-const lightbox = document.getElementById('photo-lightbox');
-const lbImg    = document.getElementById('lightbox-img');
-const lbTitle  = document.getElementById('lightbox-title');
-const lbNote   = document.getElementById('lightbox-note');
-function openLightbox(pin){
-  lbImg.src = pin.i; lbImg.alt = pin.n;
-  lbTitle.textContent = pin.n; lbNote.textContent = pin.t || '';
-  lightbox.classList.add('active'); hideTooltip();
-}
-function closeLightbox(){ lightbox.classList.remove('active'); }
-document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', function(e){ if (e.target === lightbox) closeLightbox(); });
-
-const overlay = document.getElementById('travel-overlay');
-function openTravel(){ overlay.classList.add('active'); document.body.style.overflow='hidden'; }
-function closeTravel(){ overlay.classList.remove('active'); document.body.style.overflow=''; hideTooltip(); closeLightbox(); }
-document.getElementById('open-travel').addEventListener('click', openTravel);
-document.getElementById('hero-photo-trigger').addEventListener('click', openTravel);
-document.getElementById('travel-teaser').addEventListener('click', openTravel);
-document.getElementById('close-travel').addEventListener('click', closeTravel);
-document.addEventListener('keydown', function(e){
-  if (e.key === 'Escape') {
-    if (lightbox.classList.contains('active')) closeLightbox();
-    else if (overlay.classList.contains('active')) closeTravel();
-  }
-});
-
-window.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('.exp-logo img').forEach(function(img){
-    function makeFallback(){
+window.addEventListener('DOMContentLoaded', function() {
+  // Logo fallback: if favicon fails or is too small, show styled initial
+  document.querySelectorAll('.exp-logo img').forEach(function(img) {
+    img.addEventListener('error', function() {
       var alt = img.getAttribute('alt') || '?';
       var initial = alt.trim().charAt(0).toUpperCase();
       var fb = document.createElement('div');
-      fb.className = 'exp-logo-fallback'; fb.textContent = initial;
+      fb.className = 'exp-logo-fallback';
+      fb.textContent = initial;
       img.replaceWith(fb);
-    }
-    img.addEventListener('error', makeFallback);
-    img.addEventListener('load', function(){ if (img.naturalWidth < 32) makeFallback(); });
+    });
+    img.addEventListener('load', function() {
+      // If favicon is the tiny default (16x16 stretched), swap to fallback
+      if (img.naturalWidth < 32) {
+        var alt = img.getAttribute('alt') || '?';
+        var initial = alt.trim().charAt(0).toUpperCase();
+        var fb = document.createElement('div');
+        fb.className = 'exp-logo-fallback';
+        fb.textContent = initial;
+        img.replaceWith(fb);
+      }
+    });
   });
   var e = 'kdb89' + '@' + 'cornell.edu';
   var ab = document.getElementById('email-about');
   if (ab) {
     var a = document.createElement('a');
-    a.href = 'mailto:' + e; a.textContent = e;
+    a.href = 'mailto:' + e;
+    a.textContent = e;
     a.style.cssText = 'color:var(--ink);text-decoration:none;border-bottom:1px solid #b8ceda';
     ab.appendChild(a);
   }
   var btn = document.getElementById('email-btn');
-  if (btn) btn.onclick = function(ev){ ev.preventDefault(); window.location.href = 'mailto:' + e; };
+  if (btn) {
+    btn.onclick = function(ev) { ev.preventDefault(); window.location.href = 'mailto:' + e; };
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, {threshold:0.05});
+  document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
   var secs = document.querySelectorAll('section[id]');
   var lnks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', function(){
+  window.addEventListener('scroll', function() {
     var cur = '';
-    secs.forEach(function(s){ if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
-    lnks.forEach(function(a){ a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--magenta)' : ''; });
+    secs.forEach(function(s) { if(window.scrollY >= s.offsetTop - 130) cur = s.id; });
+    lnks.forEach(function(a) { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--magenta)' : ''; });
   });
 });
 </script>
