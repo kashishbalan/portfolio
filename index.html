@@ -7,40 +7,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-  --cream:#faf7f2;
-  --warm:#f5efe4;
-  --dusty:#7a9eb5;
-  --dusty-light:#b8ceda;
-  --dusty-pale:#e4edf3;
-  --navy:#1e3a52;
-  --magenta:#b84c6e;
-  --magenta-light:#dfa0b4;
-  --magenta-pale:#f8eaf0;
-  --ink:#252320;
-  --muted:#7a6f67;
-  --bg-page:var(--cream);
-  --bg-card:#ffffff;
-  --nav-bg:rgba(250,247,242,0.93);
-  color-scheme:light;
+    :root {
+  --cream: #FAF6E8;              /* main page bg */
+  --warm: #F5EED6;               /* soft sand */
+  --dusty: #8FB3C9;              /* mid sky accent */
+  --dusty-light: #DCE9F1;        /* light sky tint */
+  --dusty-pale: #E9D9B5;         /* chamomile cream */
+  --navy: #5E90AF;               /* coastal slate */
+  --magenta: #C68B73;            /* warm terracotta (replaces magenta) */
+  --magenta-light: #E3B6A5;      /* lighter terracotta */
+  --magenta-pale: #F5E6DF;       /* pale terracotta wash */
+  --ink: #252320;                /* text */
+  --muted: #7A6F67;              /* muted text */
+  --bg-page: var(--cream);
+  --bg-card: #ffffff;
+  --nav-bg: rgba(250, 246, 232, 0.93); /* cream w/ blur */
+  color-scheme: light;
 }
-[data-theme="dark"]{
-  --cream:#1a1d24;
-  --warm:#22262f;
-  --dusty:#8db0c4;
-  --dusty-light:#a8c4d4;
-  --dusty-pale:#2a3340;
-  --navy:#0f1419;
-  --magenta:#d97090;
-  --magenta-light:#e8a5b8;
-  --magenta-pale:#3a2530;
-  --ink:#e8e6e0;
-  --muted:#9a948c;
-  --bg-page:#1a1d24;
-  --bg-card:#252932;
-  --nav-bg:rgba(26,29,36,0.92);
-  color-scheme:dark;
+or-scheme:light;
 }
+[data-theme="dark"] {
+  --cream: #1A1D24;
+  --warm: #22262F;
+  --dusty: #8FB3C9;          /* keep mid sky for accents */
+  --dusty-light: #5E90AF;    /* coastal slate tint */
+  --dusty-pale: #2A3340;     /* deep slate */
+  --navy: #0F1419;
+  --magenta: #C68B73;        /* warm terracotta */
+  --magenta-light: #D9A48F;
+  --magenta-pale: #3A2A25;
+  --ink: #E8E6E0;
+  --muted: #9A948C;
+  --bg-page: #1A1D24;
+  --bg-card: #252932;
+  --nav-bg: rgba(26, 29, 36, 0.92);
+  color-scheme: dark;
+}
+
     html{scroll-behavior:smooth}
     body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
     ::-webkit-scrollbar{width:5px}
@@ -361,11 +364,13 @@
     .skill-tag:hover{background:rgba(122,158,181,0.25);border-color:var(--dusty-light);color:white}
 
     /* CONTACT */
-    #contact{
-      background:var(--magenta-pale);
-      display:flex;flex-direction:column;align-items:center;text-align:center;
-      position:relative;overflow:hidden;
-    }
+    #contact {
+  background-image: url("water_ripples.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
     /* polka dots bg on contact */
     #contact::before{
       content:'';position:absolute;inset:0;
