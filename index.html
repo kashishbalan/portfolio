@@ -8,41 +8,37 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root {
-  --cream: #FAF6E8;              /* main page bg */
-  --warm: #F5EED6;               /* soft sand */
-  --dusty: #8FB3C9;              /* mid sky accent */
-  --dusty-light: #DCE9F1;        /* light sky tint */
-  --dusty-pale: #E9D9B5;         /* chamomile cream */
-  --navy: #5E90AF;               /* coastal slate */
-  --magenta: #C68B73;            /* warm terracotta (replaces magenta) */
-  --magenta-light: #E3B6A5;      /* lighter terracotta */
-  --magenta-pale: #F5E6DF;       /* pale terracotta wash */
-  --ink: #252320;                /* text */
-  --muted: #7A6F67;              /* muted text */
-  --bg-page: var(--cream);
-  --bg-card: #ffffff;
-  --nav-bg: rgba(250, 246, 232, 0.93); /* cream w/ blur */
-  color-scheme: light;
+  --bg-page: #FFF8E9;        /* soft buttermilk cream */
+  --bg-card: #FFFFFF;
+
+  --tint: #CFE2EE;           /* pastel blue */
+  --accent: #7FA7C2;         /* coastal mid-blue */
+  --accent-dark: #4F7A96;    /* coastal slate */
+
+  --highlight: #C47A5A;      /* warm caramel/terracotta */
+  --highlight-light: #E8B49F;
+
+  --text: #43302E;           /* old burgundy */
+  --text-muted: #7A6F67;
 }
+
 or-scheme:light;
 }
 [data-theme="dark"] {
-  --cream: #1A1D24;
-  --warm: #22262F;
-  --dusty: #8FB3C9;          /* keep mid sky for accents */
-  --dusty-light: #5E90AF;    /* coastal slate tint */
-  --dusty-pale: #2A3340;     /* deep slate */
-  --navy: #0F1419;
-  --magenta: #C68B73;        /* warm terracotta */
-  --magenta-light: #D9A48F;
-  --magenta-pale: #3A2A25;
-  --ink: #E8E6E0;
-  --muted: #9A948C;
   --bg-page: #1A1D24;
   --bg-card: #252932;
-  --nav-bg: rgba(26, 29, 36, 0.92);
-  color-scheme: dark;
+
+  --tint: #3A4A57;           /* muted slate */
+  --accent: #8FBBD4;         /* soft skyglass */
+  --accent-dark: #5E90AF;
+
+  --highlight: #D08C6B;      /* warm caramel */
+  --highlight-light: #E3B6A5;
+
+  --text: #EDEAE5;
+  --text-muted: #A8A29E;
 }
+
 
     html{scroll-behavior:smooth}
     body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
@@ -364,34 +360,81 @@ or-scheme:light;
     .skill-tag:hover{background:rgba(122,158,181,0.25);border-color:var(--dusty-light);color:white}
 
     /* CONTACT */
-    #contact {
-  background-image: url("water_ripples.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+   #contact {
+  background: var(--magenta-pale); /* now warm terracotta‑pale */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-    /* polka dots bg on contact */
-    #contact::before{
-      content:'';position:absolute;inset:0;
-      background-image:radial-gradient(circle, var(--magenta-light) 1.5px, transparent 1.5px);
-      background-size:30px 30px;
-      opacity:0.2;pointer-events:none;
-    }
-    #contact > *{position:relative}
-    #contact .s-title{max-width:480px}
-    .contact-note{font-size:0.92rem;color:var(--muted);max-width:400px;margin-bottom:2rem}
-    .contact-row{display:flex;gap:0.9rem;flex-wrap:wrap;justify-content:center}
-    .cbtn{
-      display:inline-flex;align-items:center;gap:0.4rem;
-      padding:0.8rem 1.8rem;border-radius:100px;
-      font-size:0.82rem;font-weight:500;text-decoration:none;
-      border:1.5px solid var(--ink);color:var(--ink);background:white;
-      transition:all 0.22s;
-    }
-    .cbtn:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
-    .cbtn.filled{background:var(--dusty);color:white;border-color:var(--dusty)}
-    .cbtn.filled:hover{background:var(--navy);border-color:var(--navy)}
+/* dotted background (updated to terracotta accent) */
+#contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--highlight) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+#contact > * {
+  position: relative;
+}
+
+#contact .s-title {
+  max-width: 480px;
+}
+
+.contact-note {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.contact-row {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid var(--text);
+  color: var(--text);
+  background: white;
+  transition: all 0.22s;
+}
+
+.cbtn:hover {
+  background: var(--text);
+  color: var(--bg-page);
+  transform: translateY(-2px);
+}
+
+.cbtn.filled {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.cbtn.filled:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+}
+
 
     footer{
       padding:1.4rem 4rem;background:var(--navy);
