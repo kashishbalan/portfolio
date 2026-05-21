@@ -8,18 +8,39 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --cream:#faf7f2;
-      --warm:#f5efe4;
-      --dusty:#7a9eb5;
-      --dusty-light:#b8ceda;
-      --dusty-pale:#e4edf3;
-      --navy:#1e3a52;
-      --magenta:#b84c6e;
-      --magenta-light:#dfa0b4;
-      --magenta-pale:#f8eaf0;
-      --ink:#252320;
-      --muted:#7a6f67;
-    }
+  --cream:#faf7f2;
+  --warm:#f5efe4;
+  --dusty:#7a9eb5;
+  --dusty-light:#b8ceda;
+  --dusty-pale:#e4edf3;
+  --navy:#1e3a52;
+  --magenta:#b84c6e;
+  --magenta-light:#dfa0b4;
+  --magenta-pale:#f8eaf0;
+  --ink:#252320;
+  --muted:#7a6f67;
+  --bg-page:var(--cream);
+  --bg-card:#ffffff;
+  --nav-bg:rgba(250,247,242,0.93);
+  color-scheme:light;
+}
+[data-theme="dark"]{
+  --cream:#1a1d24;
+  --warm:#22262f;
+  --dusty:#8db0c4;
+  --dusty-light:#a8c4d4;
+  --dusty-pale:#2a3340;
+  --navy:#0f1419;
+  --magenta:#d97090;
+  --magenta-light:#e8a5b8;
+  --magenta-pale:#3a2530;
+  --ink:#e8e6e0;
+  --muted:#9a948c;
+  --bg-page:#1a1d24;
+  --bg-card:#252932;
+  --nav-bg:rgba(26,29,36,0.92);
+  color-scheme:dark;
+}
     html{scroll-behavior:smooth}
     body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
     ::-webkit-scrollbar{width:5px}
@@ -339,75 +360,80 @@
       footer{padding:1.2rem 1.5rem;flex-direction:column;gap:0.3rem}
     }
   
-/* ===== SCRAPBOOK ===== */
-.scrapbook-section{
-  grid-column:1 / -1;
-  margin-top:3.5rem;background:#fffdf8;border-radius:14px;
-  padding:2.75rem 1.5rem 3.25rem;position:relative;
-  background-image:
-    repeating-linear-gradient(0deg, transparent 0, transparent 28px, rgba(122,158,181,0.05) 28px, rgba(122,158,181,0.05) 29px),
-    radial-gradient(circle at 12% 18%, rgba(247,221,141,0.06) 0, transparent 30%),
-    radial-gradient(circle at 85% 60%, rgba(223,160,180,0.08) 0, transparent 30%);
-  box-shadow:0 2px 0 rgba(122,158,181,0.06),0 14px 40px rgba(30,58,82,0.06),inset 0 0 0 1px rgba(184,206,218,0.18);
+/* ===== SCRAPBOOK (right column of About) ===== */
+.about-scrapbook{
+  position:relative;
+  background:rgba(255,253,248,0.6);
+  border-radius:14px;
+  padding:1.8rem 1.4rem 2rem;
+  border:1px solid rgba(184,206,218,0.22);
+  box-shadow:0 14px 40px rgba(30,58,82,0.06);
 }
-.scrapbook-section::before{
-  content:'';position:absolute;top:-12px;left:6%;width:120px;height:28px;
-  background:rgba(247,221,141,0.7);transform:rotate(-3deg);
-  box-shadow:0 2px 6px rgba(0,0,0,0.08);
-  background-image:repeating-linear-gradient(135deg, transparent 0, transparent 4px, rgba(255,255,255,0.18) 4px, rgba(255,255,255,0.18) 6px);
+.about-scrapbook .scrapbook-header{margin-bottom:1.4rem}
+.about-scrapbook .s-title{margin-bottom:0.4rem}
+.about-scrapbook .scrapbook-sub{
+  font-family:'Kalam',cursive;font-size:0.95rem;color:var(--muted);
+  line-height:1.5;margin-top:0.4rem;
 }
-.scrapbook-section::after{
-  content:'';position:absolute;top:-10px;right:8%;width:110px;height:26px;
-  background:rgba(223,160,180,0.7);transform:rotate(4deg);
-  box-shadow:0 2px 6px rgba(0,0,0,0.08);
-  background-image:repeating-linear-gradient(135deg, transparent 0, transparent 4px, rgba(255,255,255,0.18) 4px, rgba(255,255,255,0.18) 6px);
+.scrapbook-grid{
+  display:grid;grid-template-columns:repeat(6, 1fr);
+  gap:1rem 0.9rem;padding:0.4rem 0.2rem 0;position:relative;
 }
-.scrapbook-header{text-align:center;margin-bottom:2.2rem;position:relative}
-.scrapbook-title{font-family:'Caveat',cursive;font-size:2.6rem;color:var(--magenta);line-height:1;display:inline-block;position:relative;font-weight:600}
-.scrapbook-title::before,.scrapbook-title::after{content:'\2726';font-size:1.1rem;color:var(--magenta-light);position:absolute;top:0.5rem}
-.scrapbook-title::before{left:-1.8rem;transform:rotate(-15deg)}
-.scrapbook-title::after{right:-1.8rem;transform:rotate(15deg)}
-.scrapbook-sub{font-family:'Kalam',cursive;font-size:1.05rem;color:var(--muted);margin-top:0.4rem}
-.scrapbook-grid{position:relative;display:grid;grid-template-columns:repeat(12, 1fr);gap:1.3rem 1.3rem;max-width:1000px;margin:0 auto;padding:1.5rem 1rem 0.5rem}
 .scrap-photo{
-  position:relative;background:white;padding:10px 10px 14px;
-  box-shadow:0 6px 18px rgba(30,58,82,0.13);
+  position:relative;background:white;padding:8px 8px 6px;
+  box-shadow:0 5px 14px rgba(30,58,82,0.13);
   transition:transform 0.3s ease, box-shadow 0.3s ease;z-index:1;
 }
-.scrap-photo:hover{transform:translateY(-6px) rotate(0deg) !important;box-shadow:0 16px 36px rgba(30,58,82,0.22);z-index:10}
+.scrap-photo:hover{
+  transform:translateY(-4px) rotate(0deg) !important;
+  box-shadow:0 12px 28px rgba(30,58,82,0.20);z-index:10;
+}
+.scrap-photo .scrap-img-wrap{
+  width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--dusty-pale);
+}
 .scrap-photo img{display:block;width:100%;height:100%;object-fit:cover}
-.scrap-photo .scrap-img-wrap{width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--dusty-pale)}
-.scrap-photo .washi{position:absolute;width:60px;height:18px;top:-8px;left:50%;transform:translateX(-50%) rotate(-3deg);background:rgba(247,221,141,0.85);background-image:repeating-linear-gradient(45deg, transparent 0, transparent 3px, rgba(255,255,255,0.25) 3px, rgba(255,255,255,0.25) 5px);box-shadow:0 1px 3px rgba(0,0,0,0.08)}
-.scrap-1{grid-column:1 / span 4;transform:rotate(-3deg)}
-.scrap-2{grid-column:5 / span 4;transform:rotate(2deg);margin-top:1.2rem}
-.scrap-3{grid-column:9 / span 4;transform:rotate(-2deg)}
-.scrap-4{grid-column:2 / span 3;transform:rotate(3deg);margin-top:0.5rem}
-.scrap-5{grid-column:5 / span 4;transform:rotate(-2deg)}
-.scrap-6{grid-column:9 / span 3;transform:rotate(4deg);margin-top:0.8rem}
-.scrap-7{grid-column:4 / span 5;transform:rotate(-1.5deg);margin-top:0.5rem}
-.scrap-7 .scrap-img-wrap{aspect-ratio:4/3}
+.scrap-caption{
+  font-family:'Caveat',cursive;
+  font-size:1.05rem;color:var(--ink);
+  text-align:center;line-height:1;
+  padding:6px 2px 2px;
+}
+.scrap-photo .washi{
+  position:absolute;width:46px;height:14px;
+  top:-6px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  background:rgba(247,221,141,0.85);
+  background-image:repeating-linear-gradient(45deg, transparent 0, transparent 3px, rgba(255,255,255,0.25) 3px, rgba(255,255,255,0.25) 5px);
+  box-shadow:0 1px 3px rgba(0,0,0,0.08);z-index:2;
+}
+.scrap-1{grid-column:1 / span 2;transform:rotate(-2.5deg)}
+.scrap-2{grid-column:3 / span 2;transform:rotate(1.5deg);margin-top:0.6rem}
+.scrap-3{grid-column:5 / span 2;transform:rotate(-1.5deg)}
+.scrap-4{grid-column:1 / span 2;transform:rotate(2deg);margin-top:0.3rem}
+.scrap-5{grid-column:3 / span 2;transform:rotate(-1.8deg)}
+.scrap-6{grid-column:5 / span 2;transform:rotate(2.5deg);margin-top:0.4rem}
+.scrap-7{grid-column:2 / span 4;transform:rotate(-1deg);margin-top:0.4rem}
+.scrap-7 .scrap-img-wrap{aspect-ratio:16/9}
 .scrap-2 .washi{background:rgba(223,160,180,0.85)}
 .scrap-4 .washi{background:rgba(184,206,218,0.85)}
 .scrap-6 .washi{background:rgba(223,160,180,0.85)}
 .scrap-7 .washi{background:rgba(247,221,141,0.85)}
 .scrap-sticker{
-  position:absolute;font-family:'Caveat',cursive;font-size:2rem;
-  color:var(--magenta);pointer-events:none;z-index:5;
+  position:absolute;font-family:'Caveat',cursive;
+  pointer-events:none;z-index:5;
   text-shadow:0 1px 2px rgba(255,255,255,0.5);
 }
-.sticker-1{top:18%;right:4%;transform:rotate(12deg);color:var(--magenta-light);font-size:2.4rem}
-.sticker-2{bottom:22%;left:3%;transform:rotate(-8deg);color:#d4b04a;font-size:2.2rem}
-.sticker-3{top:48%;right:8%;transform:rotate(-15deg);color:var(--dusty);font-size:1.8rem}
-.scrap-arrow{position:absolute;pointer-events:none;z-index:4;opacity:0.55}
+.sticker-1{top:8%;right:3%;transform:rotate(12deg);color:var(--magenta-light);font-size:1.8rem}
+.sticker-2{bottom:18%;left:2%;transform:rotate(-8deg);color:#d4b04a;font-size:1.6rem}
+.sticker-3{top:42%;right:6%;transform:rotate(-15deg);color:var(--dusty);font-size:1.4rem}
+.scrap-arrow{position:absolute;pointer-events:none;z-index:4;opacity:0.5}
 .scrap-arrow path{stroke:var(--magenta);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.arrow-1{top:30%;left:32%;width:80px;height:50px;transform:rotate(-12deg)}
-.arrow-2{bottom:25%;right:30%;width:70px;height:45px;transform:rotate(20deg)}
-
+.arrow-1{top:22%;left:38%;width:60px;height:38px;transform:rotate(-12deg)}
+.arrow-2{bottom:22%;right:32%;width:55px;height:36px;transform:rotate(20deg)}
 @media(max-width:880px){
-  .scrap-1,.scrap-2,.scrap-3,.scrap-4,.scrap-5,.scrap-6,.scrap-7{grid-column:1 / -1;margin-top:0}
-  .scrap-photo{transform:rotate(-1deg) !important}
+  .scrap-1,.scrap-2,.scrap-3,.scrap-4,.scrap-5,.scrap-6,.scrap-7{
+    grid-column:1 / -1;margin-top:0;transform:rotate(-1deg) !important;
+  }
   .scrap-photo:nth-child(even){transform:rotate(1deg) !important}
-  .scrapbook-title{font-size:2rem}
   .scrap-sticker,.scrap-arrow{display:none}
 }
 
@@ -429,8 +455,7 @@
 .proj-featured-img{
   width:100%;border-radius:8px;
   box-shadow:0 14px 38px rgba(122,158,181,0.18);
-  border:1px solid var(--dusty-pale);
-  display:block;
+  border:1px solid var(--dusty-pale);display:block;
 }
 .proj-featured-content{position:relative}
 .proj-featured-badge{
@@ -448,9 +473,7 @@
   font-family:'Cormorant Garamond',serif;font-style:italic;
   font-size:1rem;color:var(--dusty);margin-bottom:1rem;
 }
-.proj-featured-desc{
-  font-size:0.92rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem;
-}
+.proj-featured-desc{font-size:0.92rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem}
 .proj-featured-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.2rem}
 .proj-featured-tags .ptag{
   background:var(--dusty-pale);color:var(--dusty);
@@ -460,16 +483,113 @@
 .featured-link{
   display:inline-flex;align-items:center;gap:0.4rem;
   font-size:0.78rem;font-weight:500;text-decoration:none;
-  padding:0.55rem 1.1rem;border-radius:100px;
-  transition:all 0.22s;
+  padding:0.55rem 1.1rem;border-radius:100px;transition:all 0.22s;
 }
 .featured-link.primary{background:var(--magenta);color:white;border:1.5px solid var(--magenta)}
 .featured-link.primary:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-2px)}
 .featured-link.outline{background:white;color:var(--ink);border:1.5px solid var(--ink)}
 .featured-link.outline:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
-@media(max-width:880px){
-  .proj-featured{grid-template-columns:1fr;gap:1.5rem}
+@media(max-width:880px){.proj-featured{grid-template-columns:1fr;gap:1.5rem}}
+
+/* ===== HERO META + SOCIALS (Chelsea-inspired) ===== */
+.hero-meta{position:relative;display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+.hero-chip{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:white;border:1px solid var(--dusty-pale);
+  font-size:0.75rem;font-weight:500;color:var(--muted);
+  padding:0.4rem 0.85rem;border-radius:100px;
 }
+.hero-chip-status{
+  border-color:rgba(46,160,67,0.35);
+  color:#1f7a35;background:rgba(46,160,67,0.06);
+}
+.status-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#2ea043;display:inline-block;
+  box-shadow:0 0 0 0 rgba(46,160,67,0.6);
+  animation:statusPulse 2s ease-in-out infinite;
+}
+@keyframes statusPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(46,160,67,0.6)}
+  50%{box-shadow:0 0 0 5px rgba(46,160,67,0)}
+}
+.hero-socials{position:relative;display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.2rem}
+.hero-social{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--ink);color:white;
+  font-size:0.78rem;font-weight:500;text-decoration:none;
+  padding:0.55rem 1.1rem;border-radius:100px;
+  transition:all 0.22s ease;border:1.5px solid var(--ink);
+}
+.hero-social:hover{background:var(--magenta);border-color:var(--magenta);transform:translateY(-2px)}
+.hero-social svg{flex-shrink:0}
+.hero-social-email{background:white;color:var(--ink)}
+.hero-social-email:hover{background:var(--magenta);color:white;border-color:var(--magenta)}
+@media(max-width:880px){
+  .hero-meta,.hero-socials{margin-top:1rem}
+  .hero-chip,.hero-social{font-size:0.72rem;padding:0.35rem 0.8rem}
+}
+
+/* ===== DARK MODE OVERRIDES ===== */
+body{background:var(--bg-page);color:var(--ink);transition:background 0.3s ease,color 0.3s ease}
+nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
+[data-theme="dark"] .nav-name{color:var(--ink)}
+[data-theme="dark"] .nav-links a{color:var(--muted)}
+[data-theme="dark"] #hero .hero-left{background:#1f2530}
+[data-theme="dark"] .hero-left::before{opacity:0.18}
+[data-theme="dark"] #hero .hero-right{background:#2a1f28}
+[data-theme="dark"] .hero-right::before{opacity:0.18}
+[data-theme="dark"] .hero-name{color:var(--ink)}
+[data-theme="dark"] .hero-bio{color:var(--muted)}
+[data-theme="dark"] .hero-photo{border-color:#2a3340;box-shadow:0 -16px 50px rgba(0,0,0,0.4)}
+[data-theme="dark"] .hero-chip{background:#252932;border-color:#2f3742;color:var(--muted)}
+[data-theme="dark"] .hero-chip-status{background:rgba(46,160,67,0.12);color:#5fd075;border-color:rgba(46,160,67,0.4)}
+[data-theme="dark"] .hero-social{background:var(--dusty-light);color:#1a1d24;border-color:var(--dusty-light)}
+[data-theme="dark"] .hero-social:hover{background:var(--magenta);color:white;border-color:var(--magenta)}
+[data-theme="dark"] .hero-social-email{background:#252932;color:var(--ink);border-color:#3a4452}
+[data-theme="dark"] .hero-social-email:hover{background:var(--magenta);color:white;border-color:var(--magenta)}
+[data-theme="dark"] #about{background:var(--bg-page)}
+[data-theme="dark"] .about-photo{border-color:#2a3340;box-shadow:10px 10px 0 #2a3340}
+[data-theme="dark"] .about-quick{background:#252932;color:var(--muted)}
+[data-theme="dark"] .about-quick strong{color:var(--dusty-light)}
+[data-theme="dark"] .aq-item{border-bottom-color:rgba(141,176,196,0.15)}
+[data-theme="dark"] .aq-val{color:var(--ink)}
+[data-theme="dark"] .about-scrapbook{background:rgba(37,41,50,0.6);border-color:rgba(141,176,196,0.18);box-shadow:0 14px 40px rgba(0,0,0,0.25)}
+[data-theme="dark"] .scrap-photo{background:#2a2e38;box-shadow:0 5px 14px rgba(0,0,0,0.35)}
+[data-theme="dark"] .scrap-caption{color:var(--ink)}
+[data-theme="dark"] #projects{background:var(--bg-page)}
+[data-theme="dark"] .proj-card{background:#252932;border-color:#2f3742}
+[data-theme="dark"] .proj-title{color:var(--ink)}
+[data-theme="dark"] .proj-desc{color:var(--muted)}
+[data-theme="dark"] .proj-featured{background:#252932;border-color:var(--magenta-light)}
+[data-theme="dark"] .proj-featured h3{color:var(--ink)}
+[data-theme="dark"] .proj-featured-desc{color:var(--muted)}
+[data-theme="dark"] .proj-featured-img{border-color:#2f3742}
+[data-theme="dark"] .featured-link.outline{background:#252932;color:var(--ink);border-color:var(--ink)}
+[data-theme="dark"] .ptag{background:#2a3340;color:var(--dusty-light)}
+[data-theme="dark"] .divider{border-top-color:var(--dusty-pale)}
+[data-theme="dark"] .s-title{color:var(--ink)}
+[data-theme="dark"] #contact{background:#2a1f28}
+[data-theme="dark"] .contact-note{color:var(--muted)}
+[data-theme="dark"] .cbtn{background:#252932;color:var(--ink);border-color:var(--ink)}
+[data-theme="dark"] .cbtn:hover{background:var(--ink);color:#1a1d24}
+[data-theme="dark"] .cbtn.filled{background:var(--dusty);border-color:var(--dusty);color:#1a1d24}
+[data-theme="dark"] .cbtn.filled:hover{background:var(--dusty-light);border-color:var(--dusty-light)}
+.nav-links{align-items:center}
+.theme-toggle{
+  background:transparent;border:1.5px solid var(--dusty-pale);
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;padding:0;color:var(--ink);
+  transition:all 0.25s ease;
+}
+[data-theme="dark"] .theme-toggle{border-color:#3a4452}
+.theme-toggle:hover{border-color:var(--magenta);color:var(--magenta);transform:rotate(20deg)}
+.theme-toggle svg{width:16px;height:16px}
+.theme-toggle .icon-sun{display:none}
+.theme-toggle .icon-moon{display:block}
+[data-theme="dark"] .theme-toggle .icon-sun{display:block}
+[data-theme="dark"] .theme-toggle .icon-moon{display:none}
 </style>
 </head>
 <body>
@@ -482,6 +602,11 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
+  
+    <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button></li>
   </ul>
 </nav>
 
@@ -489,7 +614,26 @@
   <div class="hero-left">
     <p class="hero-eyebrow">Cornell University · CS '28</p>
     <h1 class="hero-name">Hi, I'm<br><em>Kashish</em> ✦</h1>
-    <p class="hero-bio">Studying Computer Science, Operations Research, and Business at Cornell — drawn to the places where technology meets real decisions. I'm interested in building software that solves meaningful problems, whether that's in healthcare, finance, or quantitative research.</p>
+    <p class="hero-bio">I'm a sophomore at Cornell studying Computer Science with minors in Operations Research &amp; Information Engineering and Business. I have experience in <strong>machine learning</strong>, <strong>NLP research</strong>, <strong>quantitative finance</strong>, and <strong>full-stack software engineering</strong>. I'm actively looking for <strong>Summer 2026 internships</strong> in software engineering, ML, or quant.</p>
+    <div class="hero-meta">
+      <span class="hero-chip">📍 Chicago, IL</span>
+      <span class="hero-chip">🎓 Ithaca, NY</span>
+      <span class="hero-chip hero-chip-status"><span class="status-dot"></span>Open to Summer '26</span>
+    </div>
+    <div class="hero-socials">
+      <a href="https://www.linkedin.com/in/kashishbalan/" target="_blank" class="hero-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/kashishbalan" target="_blank" class="hero-social" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.87.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.29 0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="#contact" class="hero-social hero-social-email" id="hero-email-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
   </div>
   <div class="hero-right">
     <img class="hero-photo" src="hero.jpeg" alt="Kashish Balan"/>
@@ -509,55 +653,32 @@
         <div class="aq-item"><span class="aq-label">Email</span><span class="aq-val" id="email-about"></span></div>
       </div>
     </div>
-    <div class="about-content reveal reveal-d1">
-      <p class="s-label">About Me</p>
-      <h2 class="s-title">A curious builder <em>and explorer</em></h2>
-      <p>I'm a <strong>student at Cornell</strong> studying Computer Science with minors in Operations Research & Information Engineering and Business. I love the intersection of technology, learning about markets, and real-world impact.</p>
-      <p>I grew up in <strong>Hong Kong</strong>, which shaped how I see the world. I speak <strong>Mandarin</strong> and have travelled to nearly every country — Africa is next on the list.</p>
-      <p>Outside of class I'm building a React.js telehealth platform with <strong>Cornell Engineering World Health</strong>, and using tech for social good with <strong>Hack4Impact</strong>.</p>
-      <div class="interests-list">
-        <span class="interests-label">Interests</span>
-        <span class="interests-label-sep">—</span>
-        <span class="interests-item">Exploring Coffee Shops</span>
-        <span class="interests-sep">·</span>
-        <span class="interests-item">Travelling</span>
-        <span class="interests-sep">·</span>
-        <span class="interests-item">Taekwondo</span>
-        <span class="interests-sep">·</span>
-        <span class="interests-item">Board Games</span>
+    <div class="about-scrapbook reveal reveal-d1">
+      <div class="scrapbook-header">
+        <p class="s-label">About Me</p>
+        <h2 class="s-title">A little <em>scrapbook</em></h2>
+        <p class="scrapbook-sub">Snapshots from the road — because a portfolio shouldn't just be code.</p>
+      </div>
+      <div class="scrap-sticker sticker-1">✦</div>
+      <div class="scrap-sticker sticker-2">♡</div>
+      <div class="scrap-sticker sticker-3">☮</div>
+      <svg class="scrap-arrow arrow-1" viewBox="0 0 80 50" aria-hidden="true">
+        <path d="M 5 10 Q 30 5, 55 25 Q 65 32, 70 40 M 62 32 L 70 40 L 60 42"/>
+      </svg>
+      <svg class="scrap-arrow arrow-2" viewBox="0 0 70 45" aria-hidden="true">
+        <path d="M 60 5 Q 35 8, 15 28 Q 10 33, 8 40 M 16 32 L 8 40 L 6 30"/>
+      </svg>
+      <div class="scrapbook-grid">
+        <div class="scrap-photo scrap-1"><div class="washi"></div><div class="scrap-img-wrap"><img src="france.jpeg" alt=""/></div><div class="scrap-caption">Paris, France</div></div>
+        <div class="scrap-photo scrap-2"><div class="washi"></div><div class="scrap-img-wrap"><img src="chicago.jpeg" alt=""/></div><div class="scrap-caption">Chicago, USA</div></div>
+        <div class="scrap-photo scrap-3"><div class="washi"></div><div class="scrap-img-wrap"><img src="italy.jpeg" alt=""/></div><div class="scrap-caption">Rome, Italy</div></div>
+        <div class="scrap-photo scrap-4"><div class="washi"></div><div class="scrap-img-wrap"><img src="netherlands.jpeg" alt=""/></div><div class="scrap-caption">Amsterdam, Netherlands</div></div>
+        <div class="scrap-photo scrap-5"><div class="washi"></div><div class="scrap-img-wrap"><img src="nyc.jpeg" alt=""/></div><div class="scrap-caption">New York, USA</div></div>
+        <div class="scrap-photo scrap-6"><div class="washi"></div><div class="scrap-img-wrap"><img src="greece.jpeg" alt=""/></div><div class="scrap-caption">Santorini, Greece</div></div>
+        <div class="scrap-photo scrap-7"><div class="washi"></div><div class="scrap-img-wrap"><img src="sf.jpeg" alt=""/></div><div class="scrap-caption">San Francisco, USA</div></div>
       </div>
     </div>
   </div>
-
-  <!-- ===== SCRAPBOOK ===== -->
-  <div class="scrapbook-section reveal">
-    <div class="scrapbook-header">
-      <div class="scrapbook-title">a little scrapbook</div>
-      <div class="scrapbook-sub">snapshots from the road</div>
-    </div>
-
-    <div class="scrap-sticker sticker-1">✦</div>
-    <div class="scrap-sticker sticker-2">♡</div>
-    <div class="scrap-sticker sticker-3">☮</div>
-
-    <svg class="scrap-arrow arrow-1" viewBox="0 0 80 50">
-      <path d="M 5 10 Q 30 5, 55 25 Q 65 32, 70 40 M 62 32 L 70 40 L 60 42"/>
-    </svg>
-    <svg class="scrap-arrow arrow-2" viewBox="0 0 70 45">
-      <path d="M 60 5 Q 35 8, 15 28 Q 10 33, 8 40 M 16 32 L 8 40 L 6 30"/>
-    </svg>
-
-    <div class="scrapbook-grid">
-      <div class="scrap-photo scrap-1"><div class="washi"></div><div class="scrap-img-wrap"><img src="france.jpeg" alt=""/></div></div>
-      <div class="scrap-photo scrap-2"><div class="washi"></div><div class="scrap-img-wrap"><img src="chicago.jpeg" alt=""/></div></div>
-      <div class="scrap-photo scrap-3"><div class="washi"></div><div class="scrap-img-wrap"><img src="italy.jpeg" alt=""/></div></div>
-      <div class="scrap-photo scrap-4"><div class="washi"></div><div class="scrap-img-wrap"><img src="netherlands.jpeg" alt=""/></div></div>
-      <div class="scrap-photo scrap-5"><div class="washi"></div><div class="scrap-img-wrap"><img src="nyc.jpeg" alt=""/></div></div>
-      <div class="scrap-photo scrap-6"><div class="washi"></div><div class="scrap-img-wrap"><img src="greece.jpeg" alt=""/></div></div>
-      <div class="scrap-photo scrap-7"><div class="washi"></div><div class="scrap-img-wrap"><img src="sf.jpeg" alt=""/></div></div>
-    </div>
-  </div>
-
 </section>
 
 <hr class="divider"/>
@@ -601,22 +722,15 @@
   <p class="s-label reveal">My Work</p>
   <h2 class="s-title reveal">Projects</h2>
   <div class="projects-grid">
-    <!-- Featured: MedExplain -->
     <div class="proj-featured reveal" style="grid-column:1 / -1">
-      <div>
-        <img class="proj-featured-img" src="medexplain.png" alt="MedExplain CMS dashboard"/>
-      </div>
+      <div><img class="proj-featured-img" src="medexplain.png" alt="MedExplain CMS dashboard"/></div>
       <div class="proj-featured-content">
         <span class="proj-featured-badge">★ Featured Project</span>
         <h3>Med<em>Explain</em></h3>
         <p class="proj-featured-sub">Health Equity CMS · Cornell Hack4Impact</p>
         <p class="proj-featured-desc">A full-stack content management system that helps a health equity nonprofit publish accessible, evidence-based medical information. I built admin dashboard features — author management, search and filter with Algolia, bulk article editing, assessment-question authoring, and subcategory tagging — to streamline delivery to underserved patient communities.</p>
         <div class="proj-featured-tags">
-          <span class="ptag">JavaScript</span>
-          <span class="ptag">React</span>
-          <span class="ptag">Algolia</span>
-          <span class="ptag">Azure</span>
-          <span class="ptag">Node.js</span>
+          <span class="ptag">JavaScript</span><span class="ptag">React</span><span class="ptag">Algolia</span><span class="ptag">Azure</span><span class="ptag">Node.js</span>
         </div>
         <div class="proj-featured-links">
           <a href="https://github.com/cornellh4i/MedExplain" target="_blank" class="featured-link primary">View on GitHub →</a>
@@ -717,6 +831,8 @@ window.addEventListener('DOMContentLoaded', function() {
     a.style.cssText = 'color:var(--ink);text-decoration:none;border-bottom:1px solid #b8ceda';
     ab.appendChild(a);
   }
+  var heroBtn = document.getElementById('hero-email-btn');
+  if (heroBtn) heroBtn.onclick = function(ev){ ev.preventDefault(); window.location.href = 'mailto:' + e; };
   var btn = document.getElementById('email-btn');
   if (btn) {
     btn.onclick = function(ev) { ev.preventDefault(); window.location.href = 'mailto:' + e; };
@@ -733,6 +849,27 @@ window.addEventListener('DOMContentLoaded', function() {
     lnks.forEach(function(a) { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--magenta)' : ''; });
   });
 });
+</script>
+
+<script>
+(function(){
+  var saved = null;
+  try { saved = localStorage.getItem('theme'); } catch(e){}
+  if (!saved) {
+    saved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', saved);
+  document.addEventListener('DOMContentLoaded', function(){
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function(){
+      var cur = document.documentElement.getAttribute('data-theme') || 'light';
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch(e){}
+    });
+  });
+})();
 </script>
 </body>
 </html>
