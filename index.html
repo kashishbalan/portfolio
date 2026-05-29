@@ -230,6 +230,90 @@
   display:grid;grid-template-columns:repeat(2, 1fr);
   gap:1.75rem;
 }
+    /* ===== HORIZONTAL PROJECT ROWS (Chelsea-style) ===== */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.proj-row {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--dusty-pale);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
+}
+.proj-row:hover {
+  box-shadow: 0 12px 36px rgba(122,158,181,0.15);
+}
+.proj-row-img {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  background: var(--dusty-pale);
+  flex-shrink: 0;
+}
+.proj-row-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.proj-row-body {
+  padding: 1.8rem 2rem 1.8rem 0;
+  display: flex;
+  flex-direction: column;
+}
+.proj-row-body h3 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.proj-row-body h3 em { font-style: italic; color: var(--magenta); }
+.proj-row-body .proj-sub {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--dusty);
+  margin-bottom: 0.65rem;
+}
+.proj-row-body .proj-desc {
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 0.9rem;
+}
+.proj-row-body .proj-tags { margin-bottom: 1rem; }
+
+[data-theme="dark"] .proj-row {
+  background: #252932;
+  border-color: #2f3742;
+}
+[data-theme="dark"] .proj-row-img {
+  background: #2a3340;
+}
+[data-theme="dark"] .proj-row-body h3 { color: var(--ink); }
+[data-theme="dark"] .proj-row-body .proj-desc { color: var(--muted); }
+
+@media(max-width:880px) {
+  .proj-row {
+    grid-template-columns: 1fr;
+  }
+  .proj-row-img {
+    height: 200px;
+  }
+  .proj-row-body {
+    padding: 1.2rem 1.4rem 1.4rem;
+  }
+}
 .proj-card{
   position:relative;display:flex;flex-direction:column;
   background:var(--bg-card);border:1px solid var(--dusty-pale);
@@ -339,6 +423,8 @@
   .projects-grid{grid-template-columns:1fr;gap:1.25rem}
   .proj-card h3{font-size:1.3rem}
 }
+
+    
 
 
     /* SKILLS — navy background, clean */
@@ -700,12 +786,14 @@ nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
 <section id="projects">
   <p class="s-label reveal">My Work</p>
   <h2 class="s-title reveal">Projects</h2>
-  <div class="projects-grid">
+  <div class="projects-list">
 
-    <!-- MedExplain (Featured) -->
-    <div class="proj-card reveal" style="grid-column:1 / -1">
-      <div class="proj-img-wrap"><img src="medexplain.png" alt="MedExplain CMS dashboard"/></div>
-      <div class="proj-card-body">
+    <!-- MedExplain -->
+    <div class="proj-row reveal">
+      <div class="proj-row-img">
+        <img src="medexplain.png" alt="MedExplain CMS dashboard"/>
+      </div>
+      <div class="proj-row-body">
         <span class="proj-card-badge">★ Featured Project</span>
         <h3>Med<em>Explain</em></h3>
         <p class="proj-sub">Health Equity CMS · Cornell Hack4Impact</p>
@@ -720,89 +808,95 @@ nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
       </div>
     </div>
 
-    <!-- Hoursly -->
-<div class="proj-card reveal">
-  <div class="proj-img-wrap">
-    <img src="hoursely.jpeg" alt="Hoursly App Screenshot" />
-  </div>
-  <div class="proj-card-body">
-    <h3>Hours<em>ly</em></h3>
-    <p class="proj-sub">Cornell student tooling</p>
-    <p class="proj-desc">
-      A centralized app that helps Cornell students quickly find and track TA office hours across all their courses. Built around a Node.js backend with searchable schedules, course-level filters, and real-time availability so students stop digging through course pages.
-    </p>
-    <div class="proj-tags">
-      <span class="ptag">Node.js</span><span class="ptag">Back-End</span><span class="ptag">API Development</span>
+    <!-- Sentiment Trader -->
+    <div class="proj-row reveal">
+      <div class="proj-row-img">
+        <img src="sentiment-trader.jpeg" alt="Sentiment Trader Dashboard"/>
+      </div>
+      <div class="proj-row-body">
+        <h3>Sentiment<em> Trader</em></h3>
+        <p class="proj-sub">FinBERT · NewsAPI · Alpaca API · Python</p>
+        <p class="proj-desc">Built a long/short equity system using FinBERT to score news sentiment and auto-execute trades via Alpaca. Back-tested on 25 S&amp;P 100 tickers over 2 years: 1.15 Sharpe ratio, 20.2% annualized return, 8.3% max drawdown.</p>
+        <div class="proj-tags">
+          <span class="ptag">Python</span><span class="ptag">FinBERT</span><span class="ptag">NLP</span><span class="ptag">Alpaca API</span><span class="ptag">Quant Finance</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="https://github.com/kashishbalan/sentiment-trader/tree/main" target="_blank" class="proj-card-link primary">GitHub</a>
+        </div>
+      </div>
     </div>
-    <div class="proj-card-links">
-      <a href="https://github.com/kashishbalan/HourslyBackend" target="_blank" class="proj-card-link primary">GitHub</a>
-    </div>
-  </div>
-</div>
 
+    <!-- Hoursly -->
+    <div class="proj-row reveal">
+      <div class="proj-row-img">
+        <img src="hoursely.jpeg" alt="Hoursly App Screenshot"/>
+      </div>
+      <div class="proj-row-body">
+        <h3>Hours<em>ly</em></h3>
+        <p class="proj-sub">Cornell student tooling</p>
+        <p class="proj-desc">A centralized app that helps Cornell students quickly find and track TA office hours across all their courses. Built around a Node.js backend with searchable schedules, course-level filters, and real-time availability so students stop digging through course pages.</p>
+        <div class="proj-tags">
+          <span class="ptag">Node.js</span><span class="ptag">Back-End</span><span class="ptag">API Development</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="https://github.com/kashishbalan/HourslyBackend" target="_blank" class="proj-card-link primary">GitHub</a>
+        </div>
+      </div>
+    </div>
 
     <!-- Concertify -->
-<div class="proj-card reveal reveal-d1">
-  <div class="proj-img-wrap">
-    <img src="concertify.jpeg" alt="Concertify Music Dashboard" />
-  </div>
-  <div class="proj-card-body">
-    <h3>Concert<em>ify</em></h3>
-    <p class="proj-sub">Concert discovery for Spotify</p>
-    <p class="proj-desc">
-      A Spotify extension that lets users save upcoming concerts for their top artists, explore albums and playlists, and discover local events — all in one place. Designed in Figma, built on the Spotify API with a Firebase backend so listening history drives the concert feed.
-    </p>
-    <div class="proj-tags">
-      <span class="ptag">Spotify API</span><span class="ptag">Firebase</span><span class="ptag">Figma</span>
+    <div class="proj-row reveal">
+      <div class="proj-row-img">
+        <img src="concertify.jpeg" alt="Concertify Music Dashboard"/>
+      </div>
+      <div class="proj-row-body">
+        <h3>Concert<em>ify</em></h3>
+        <p class="proj-sub">Concert discovery for Spotify</p>
+        <p class="proj-desc">A Spotify extension that lets users save upcoming concerts for their top artists, explore albums and playlists, and discover local events — all in one place. Designed in Figma, built on the Spotify API with a Firebase backend so listening history drives the concert feed.</p>
+        <div class="proj-tags">
+          <span class="ptag">Spotify API</span><span class="ptag">Firebase</span><span class="ptag">Figma</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="https://drive.google.com/file/d/1ODG_oL6ivqcrChpEZGZfJ6gHGpsCVhkx/view" target="_blank" class="proj-card-link primary">Watch Demo</a>
+        </div>
+      </div>
     </div>
-    <div class="proj-card-links">
-      <a href="https://drive.google.com/file/d/1ODG_oL6ivqcrChpEZGZfJ6gHGpsCVhkx/view" target="_blank" class="proj-card-link primary">Watch Demo</a>
-    </div>
-  </div>
-</div>
-
 
     <!-- Telehealth -->
-<div class="proj-card reveal reveal-d2">
-  <div class="proj-img-wrap">
-    <img src="telehealth.jpeg" alt="Telehealth Platform Screenshot" />
-  </div>
-  <div class="proj-card-body">
-    <h3>Telehealth <em>Platform</em></h3>
-    <p class="proj-sub">Cornell Engineering World Health</p>
-    <p class="proj-desc">
-      A community-centered digital wellness hub for the Navajo Nation, where over 50% of households lack broadband. Blends digital health with Diné principles like Hózhó (balance) and K'é (kinship). React.js interface with earth-tone palettes, circular layouts, and low-bandwidth, mobile-first design.
-    </p>
-    <div class="proj-tags">
-      <span class="ptag">React.js</span><span class="ptag">Healthcare Equity</span><span class="ptag">Mobile-First</span><span class="ptag">Indigenous Communities</span>
+    <div class="proj-row reveal">
+      <div class="proj-row-img">
+        <img src="telehealth.jpeg" alt="Telehealth Platform Screenshot"/>
+      </div>
+      <div class="proj-row-body">
+        <h3>Telehealth <em>Platform</em></h3>
+        <p class="proj-sub">Cornell Engineering World Health</p>
+        <p class="proj-desc">A community-centered digital wellness hub for the Navajo Nation, where over 50% of households lack broadband. Blends digital health with Diné principles like Hózhó (balance) and K'é (kinship). React.js interface with earth-tone palettes, circular layouts, and low-bandwidth, mobile-first design.</p>
+        <div class="proj-tags">
+          <span class="ptag">React.js</span><span class="ptag">Healthcare Equity</span><span class="ptag">Mobile-First</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="Software_Final_Poster.pdf" target="_blank" class="proj-card-link primary">View Poster</a>
+        </div>
+      </div>
     </div>
-    <div class="proj-card-links">
-      <a href="Software_Final_Poster.pdf" target="_blank" class="proj-card-link primary">View Poster</a>
-    </div>
-  </div>
-</div>
-
 
     <!-- Expert Classifier -->
-<div class="proj-card reveal reveal-d3">
-  <div class="proj-img-wrap">
-    <img src="expert_classifier.jpeg" alt="Expert Classifier Notebook Screenshot" />
-  </div>
-  <div class="proj-card-body">
-    <h3>Expert <em>Classifier</em></h3>
-    <p class="proj-sub">MIT Lincoln Laboratory</p>
-    <p class="proj-desc">
-      An NLP model classifying experts vs. non-experts on StackExchange using Naive Bayes and text-style features. I built a sentiment-analysis program as an additional classification signal, exploring how writing tone and structure correlate with domain expertise.
-    </p>
-    <div class="proj-tags">
-      <span class="ptag">Python</span><span class="ptag">NLP</span><span class="ptag">Naive Bayes</span>
+    <div class="proj-row reveal">
+      <div class="proj-row-img">
+        <img src="expert_classifier.jpeg" alt="Expert Classifier Notebook Screenshot"/>
+      </div>
+      <div class="proj-row-body">
+        <h3>Expert <em>Classifier</em></h3>
+        <p class="proj-sub">MIT Lincoln Laboratory</p>
+        <p class="proj-desc">An NLP model classifying experts vs. non-experts on StackExchange using Naive Bayes and text-style features. Built a sentiment-analysis program as an additional classification signal, exploring how writing tone correlates with domain expertise.</p>
+        <div class="proj-tags">
+          <span class="ptag">Python</span><span class="ptag">NLP</span><span class="ptag">Naive Bayes</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="Expert_Classifier_Presentation.pdf" target="_blank" class="proj-card-link primary">View Presentation</a>
+        </div>
+      </div>
     </div>
-    <div class="proj-card-links">
-      <a href="Expert_Classifier_Presentation.pdf" target="_blank" class="proj-card-link primary">View Presentation</a>
-    </div>
-  </div>
-</div>
-
 
   </div>
 </section>
