@@ -787,19 +787,20 @@
     }
     .hero-arc-text{
   position:absolute;
-  top:1rem;
+  top:-2.5rem;
   left:50%;
   transform:translateX(-50%);
-  width:90%;
-  max-width:380px;
+  width:100%;
+  max-width:420px;
   z-index:1;
   pointer-events:none;
+  overflow:visible;
 }
 .hero-arc-text text{
   font-family:'Poppins',sans-serif;
   font-weight:800;
-  font-size:30px;
-  letter-spacing:0.04em;
+  font-size:26px;
+  letter-spacing:0.03em;
   fill:white;
   filter:drop-shadow(0 2px 3px rgba(30,58,82,0.25));
 }
@@ -1031,10 +1032,10 @@ nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
     </div>
   </div>
   <div class="hero-right">
-    <svg class="hero-arc-text" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-  <path id="arcPath" d="M 20,180 A 180,180 0 0 1 380,180" fill="none"/>
+    <svg class="hero-arc-text" viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg">
+  <path id="arcPath" d="M 10,130 A 210,210 0 0 1 430,130" fill="none"/>
   <text>
-    <textPath href="#arcPath" startOffset="50%" text-anchor="middle">HI, I'M KASHISH</textPath>
+    <textPath href="#arcPath" startOffset="50%" text-anchor="middle">HI, I'M KASHISH!</textPath>
   </text>
 </svg>
     <img class="hero-photo" src="hero.jpeg" alt="Kashish Balan"/>
