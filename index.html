@@ -296,67 +296,136 @@
 
 }
 
-    /* EXPERIENCE */
-    #experience{background:var(--navy)}
-    #experience .s-label{color:var(--magenta-light)}
-    #experience .s-title{color:white;font-size:clamp(2.4rem,4vw,3.4rem)}
-    .exp-list{display:flex;flex-direction:column}
-    .exp-item{
-      display:grid;grid-template-columns:180px 1fr;gap:2.5rem;
-      padding:1.8rem 0;border-bottom:1px solid rgba(255,255,255,0.1);
-    }
-    .exp-item:last-child{border-bottom:none}
-    .exp-meta{display:flex;gap:0.9rem;align-items:flex-start}
-    .exp-logo{
-      flex-shrink:0;
-      width:50px;height:50px;
-      border-radius:4px;
-      background:white;
-      display:flex;align-items:center;justify-content:center;
-      padding:1px;
-      border:1px solid rgba(255,255,255,0.08);
-      box-shadow:0 2px 8px rgba(0,0,0,0.18);
-      overflow:hidden;
-    }
-    .exp-logo img{width:100%;height:100%;object-fit:contain}
-    .exp-logo-fallback{
-      width:100%;height:100%;
-      display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(135deg,var(--dusty),var(--magenta));
-      color:white;border-radius:5px;
-      font-family:'Bodoni Moda',serif;font-weight:600;font-size:1rem;
-    }
-    .exp-meta-text{flex:1;min-width:0}
-    .exp-date{font-size:0.75rem;color:var(--dusty-light);letter-spacing:0.06em;margin-bottom:0.3rem;font-weight:500}
-    .exp-org{font-size:0.75rem;color:white;line-height:1.4}
-    .exp-role{
-      font-family:'Bodoni Moda',serif;font-size:1.2rem;font-weight:600;
-      color:white;margin-bottom:0.2rem;
-    }
-    .exp-place{font-size:0.78rem;color:var(--magenta-light);margin-bottom:0.5rem;font-weight:500}
-    .exp-bullets{list-style:none;padding:0}
-    .exp-bullets li{
-      font-size:0.9rem;color:rgba(250,247,242,0.65);line-height:1.7;
-      padding-left:1.1rem;position:relative;margin-bottom:0.2rem;
-    }
-    .exp-bullets li{
-  font-size:0.82rem;
-  color:rgba(250,247,242,0.65);
+   #experience{
+  background:var(--navy);
+  padding:6rem 0;
+}
+
+#experience .s-title{
+  color:white;
+  font-size:clamp(2.6rem,4vw,3.6rem);
+  margin-bottom:3rem;
+}
+
+/* Stack but more breathing room */
+.exp-list{
+  display:flex;
+  flex-direction:column;
+  gap:2.5rem;
+}
+
+/* CARD STYLE instead of row divider */
+.exp-item{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:2rem;
+
+  padding:2rem;
+  border-radius:18px;
+
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+
+  transition: all 0.25s ease;
+}
+
+.exp-item:hover{
+  transform: translateY(-4px);
+  background:rgba(255,255,255,0.05);
+}
+
+/* LEFT SIDE (logo becomes a visual anchor) */
+.exp-meta{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.8rem;
+}
+
+.exp-logo{
+  width:82px;
+  height:82px;
+  border-radius:14px;
+
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:10px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.35);
+  overflow:hidden;
+}
+
+.exp-logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+/* dates under logo (clean stack) */
+.exp-date{
+  font-size:0.7rem;
+  color:var(--dusty-light);
+  letter-spacing:0.08em;
+  text-align:center;
+}
+
+/* RIGHT SIDE CONTENT */
+.exp-meta-text{
+  min-width:0;
+}
+
+/* ROLE becomes the hero text */
+.exp-role{
+  font-family:'Bodoni Moda',serif;
+  font-size:1.4rem;
+  font-weight:600;
+  color:white;
+  margin-bottom:0.3rem;
+}
+
+/* org becomes subtle secondary line */
+.exp-org{
+  font-size:0.85rem;
+  color:rgba(255,255,255,0.65);
+  margin-bottom:0.3rem;
+}
+
+/* place as accent tag */
+.exp-place{
+  font-size:0.75rem;
+  color:var(--magenta-light);
+  margin-bottom:1rem;
+}
+
+/* BULLETS → more editorial spacing */
+.exp-bullets{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+}
+
+.exp-bullets li{
+  font-size:0.88rem;
+  color:rgba(250,247,242,0.72);
   line-height:1.7;
-  margin-bottom:0.2rem;
 
   display:flex;
+  gap:0.7rem;
   align-items:flex-start;
-  gap:0.6rem;
 }
 
 .exp-bullets li::before{
-  content:'●';
+  content:'✦';
   color:var(--magenta-light);
   font-size:0.8rem;
-  line-height:1.7;
-  flex-shrink:0;
   margin-top:0.15rem;
+  flex-shrink:0;
 }
 
     /* PROJECTS */
