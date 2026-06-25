@@ -1129,6 +1129,27 @@ nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
 </footer>
 
 <script>
+   const blob = document.createElement("div");
+blob.classList.add("cursor-blob");
+document.body.appendChild(blob);
+
+let mouseX = 0, mouseY = 0;
+let blobX = 0, blobY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animate(){
+  blobX += (mouseX - blobX) * 0.12;
+  blobY += (mouseY - blobY) * 0.12;
+
+  blob.style.transform = `translate(${blobX}px, ${blobY}px)`;
+  requestAnimationFrame(animate);
+}
+
+animate();
 window.addEventListener('DOMContentLoaded', function() {
   // Logo fallback: if favicon fails or is too small, show styled initial
   document.querySelectorAll('.exp-logo img').forEach(function(img) {
@@ -1182,27 +1203,7 @@ window.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-  const blob = document.createElement("div");
-blob.classList.add("cursor-blob");
-document.body.appendChild(blob);
-
-let mouseX = 0, mouseY = 0;
-let blobX = 0, blobY = 0;
-
-document.addEventListener("mousemove", (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-
-function animate(){
-  blobX += (mouseX - blobX) * 0.12;
-  blobY += (mouseY - blobY) * 0.12;
-
-  blob.style.transform = `translate(${blobX}px, ${blobY}px)`;
-  requestAnimationFrame(animate);
-}
-
-animate();
+ 
 (function(){
   var saved = null;
   try { saved = localStorage.getItem('theme'); } catch(e){}
