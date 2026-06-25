@@ -8,37 +8,62 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-  --cream:#faf7f2;
-  --warm:#f5efe4;
-  --dusty:#7a9eb5;
-  --dusty-light:#b8ceda;
-  --dusty-pale:#e4edf3;
-  --navy:#1e3a52;
-  --magenta:#b84c6e;
-  --magenta-light:#dfa0b4;
-  --magenta-pale:#f8eaf0;
-  --ink:#252320;
-  --muted:#7a6f67;
+  /* Base neutrals (cleaner, less yellow) */
+  --cream:#fbfaf8;
+  --warm:#f4f1ec;
+
+  /* Primary cool palette (more modern blue) */
+  --dusty:#6f93ad;
+  --dusty-light:#a9c2d4;
+  --dusty-pale:#e7f0f6;
+
+  /* Deep navy (slightly richer + less gray) */
+  --navy:#162c40;
+
+  /* Accent (more refined rose, less neon magenta) */
+  --magenta:#c45a7a;
+  --magenta-light:#e3a6b8;
+  --magenta-pale:#fae9ef;
+
+  /* Text system (higher clarity) */
+  --ink:#1f1e1c;
+  --muted:#6f665f;
+
+  /* Layout surfaces */
   --bg-page:var(--cream);
   --bg-card:#ffffff;
-  --nav-bg:rgba(250,247,242,0.93);
+  --nav-bg:rgba(251,250,248,0.92);
+
   color-scheme:light;
 }
+
 [data-theme="dark"]{
-  --cream:#1a1d24;
-  --warm:#22262f;
-  --dusty:#8db0c4;
-  --dusty-light:#a8c4d4;
-  --dusty-pale:#2a3340;
-  --navy:#0f1419;
-  --magenta:#d97090;
-  --magenta-light:#e8a5b8;
-  --magenta-pale:#3a2530;
-  --ink:#e8e6e0;
-  --muted:#9a948c;
-  --bg-page:#1a1d24;
-  --bg-card:#252932;
-  --nav-bg:rgba(26,29,36,0.92);
+  /* Dark base (less blue-gray, more neutral charcoal) */
+  --cream:#121418;
+  --warm:#171a20;
+
+  /* Softer but still visible cool tones */
+  --dusty:#7fa6bd;
+  --dusty-light:#9fbfd4;
+  --dusty-pale:#1f2a35;
+
+  /* Deeper navy for contrast */
+  --navy:#0b1117;
+
+  /* Accent (warmer rose for dark mode glow) */
+  --magenta:#e07a9a;
+  --magenta-light:#f0b2c2;
+  --magenta-pale:#2a1b22;
+
+  /* Text */
+  --ink:#eceae6;
+  --muted:#a7a19a;
+
+  /* Surfaces */
+  --bg-page:#121418;
+  --bg-card:#1a1f26;
+  --nav-bg:rgba(18,20,24,0.85);
+
   color-scheme:dark;
 }
     html{scroll-behavior:smooth}
