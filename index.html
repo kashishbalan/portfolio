@@ -300,7 +300,25 @@
       font-size:0.82rem;color:rgba(250,247,242,0.65);line-height:1.7;
       padding-left:1.1rem;position:relative;margin-bottom:0.2rem;
     }
-    .exp-bullets li::before{content:'●';position:absolute;left:0;font-size:0.8rem;top:0.5rem;color:var(--magenta-light)}
+    .exp-bullets li{
+  font-size:0.82rem;
+  color:rgba(250,247,242,0.65);
+  line-height:1.7;
+  margin-bottom:0.2rem;
+
+  display:flex;
+  align-items:flex-start;
+  gap:0.6rem;
+}
+
+.exp-bullets li::before{
+  content:'●';
+  color:var(--magenta-light);
+  font-size:0.8rem;
+  line-height:1.7;
+  flex-shrink:0;
+  margin-top:0.15rem;
+}
 
     /* PROJECTS */
     #projects{background:var(--cream)}
