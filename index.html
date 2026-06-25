@@ -177,13 +177,12 @@
     }
     .pill:nth-child(even){border-color:var(--magenta-light);color:var(--magenta)}
     .hero-right{
-      background:var(--magenta-pale);
-      display:flex;align-items:flex-end;justify-content:center;
-      padding:4rem 2.5rem 0;
-      overflow:hidden;
-      position:relative;
-      
-    }
+  background:var(--magenta-pale);
+  display:flex;align-items:flex-end;justify-content:center;
+  padding:0;
+  overflow:visible;
+  position:relative;
+}
     .hero-right::before{
       content:'';
       position:absolute;inset:0;
@@ -193,15 +192,14 @@
       pointer-events:none;
     }
     .hero-photo{
-      position:relative;
-      width:100%;max-width:320px;
-      border-radius:6px 6px 0 0;
-      object-fit:cover;object-position:top center;
-      height:70vh;
-      box-shadow:0 -16px 50px rgba(30,58,82,0.12);
-      border:3px solid white;
-      border-bottom:none;
-    }
+  position:relative;
+  width:100%;max-width:380px;
+  border-radius:0;
+  object-fit:cover;object-position:top center;
+  height:75vh;
+  box-shadow:none;
+  border:none;
+}
     .bubble-heading{
   font-family:'Poppins',sans-serif;
   font-weight:800;
@@ -787,25 +785,23 @@
     }
     .hero-arc-text{
   position:absolute;
-  top:-2.5rem;
-  left:50%;
-  transform:translateX(-50%);
-  width:100%;
-  max-width:420px;
-  z-index:1;
+  top:0.5rem;
+  left:-1.5rem;
+  width:280px;
+  z-index:5;
   pointer-events:none;
   overflow:visible;
 }
 .hero-arc-text text{
   font-family:'Poppins',sans-serif;
   font-weight:800;
-  font-size:26px;
-  letter-spacing:0.03em;
-  fill:white;
-  filter:drop-shadow(0 2px 3px rgba(30,58,82,0.25));
+  font-size:22px;
+  letter-spacing:0.02em;
+  fill:rgba(0,0,0,0.08);
+  stroke:none;
 }
 [data-theme="dark"] .hero-arc-text text{
-  fill:var(--dusty-light);
+  fill:rgba(255,255,255,0.1);
 }
   
 /* ===== SCRAPBOOK (right column of About) ===== */
@@ -1032,10 +1028,10 @@ nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
     </div>
   </div>
   <div class="hero-right">
-    <svg class="hero-arc-text" viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg">
-  <path id="arcPath" d="M 10,130 A 210,210 0 0 1 430,130" fill="none"/>
+    <svg class="hero-arc-text" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+  <path id="arcPath" d="M 10,250 A 150,150 0 0 1 260,100" fill="none"/>
   <text>
-    <textPath href="#arcPath" startOffset="50%" text-anchor="middle">HI, I'M KASHISH!</textPath>
+    <textPath href="#arcPath" startOffset="2%">HI, I'M KASHISH!</textPath>
   </text>
 </svg>
     <img class="hero-photo" src="hero.jpeg" alt="Kashish Balan"/>
