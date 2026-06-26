@@ -6,6 +6,33 @@
   <title>Kashish Balan</title>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
+  .cursor-blob{
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+  z-index:1;
+  background: radial-gradient(
+    circle,
+    rgba(196,90,122,0.15),
+    rgba(111,147,173,0.08),
+    transparent 70%
+  );
+  filter: blur(25px);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+[data-theme="dark"] .cursor-blob{
+  background: radial-gradient(
+    circle,
+    rgba(224,122,154,0.18),
+    rgba(127,166,189,0.1),
+    transparent 70%
+  );
+}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     .cursor-glow{
   width:180px;
@@ -662,7 +689,7 @@
   margin-bottom: 1rem;
 }
 .proj-row-body .ptag {
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   letter-spacing: 0.04em;
   background: var(--dusty-pale);
   color: var(--dusty);
