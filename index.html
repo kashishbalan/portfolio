@@ -130,13 +130,13 @@
     }
     /* polka dot overlay on hero */
     .hero-left::before{
-      content:'';
-      position:absolute;inset:0;
-      background-image:radial-gradient(circle, var(--dusty-light) 1.5px, transparent 1.5px);
-      background-size:28px 28px;
-      opacity:0.35;
-      pointer-events:none;
-    }
+  content:'';
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle, var(--dusty-light) 2.5px, transparent 2.5px);
+  background-size:40px 40px;
+  opacity:0.35;
+  pointer-events:none;
+}
     .hero-left::after{
   content:'';
   position:absolute;
@@ -184,13 +184,13 @@
   position:relative;
 }
     .hero-right::before{
-      content:'';
-      position:absolute;inset:0;
-      background-image:radial-gradient(circle, var(--magenta-light) 1.5px, transparent 1.5px);
-      background-size:24px 24px;
-      opacity:0.25;
-      pointer-events:none;
-    }
+  content:'';
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle, var(--magenta-light) 2.5px, transparent 2.5px);
+  background-size:38px 38px;
+  opacity:0.25;
+  pointer-events:none;
+}
     .hero-photo{
   position:relative;
   width:100%;max-width:380px;
@@ -345,12 +345,12 @@
 
   background-image: radial-gradient(
     circle,
-    rgba(168,196,212,0.25) 1px,
-    transparent 1px
+    rgba(168,196,212,0.4) 2px,
+    transparent 2px
   );
 
-  background-size: 28px 28px;
-  opacity:0.12;
+  background-size: 40px 40px;
+  opacity:0.25;
 
   pointer-events:none;
 }
@@ -721,7 +721,21 @@
 
 
     /* SKILLS — navy background, clean */
-    #skills{background:var(--navy);color:var(--cream)}
+    #skills{background:var(--navy);color:var(--cream);position:relative;overflow:hidden}
+#skills::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image: radial-gradient(
+    circle,
+    rgba(168,196,212,0.4) 2px,
+    transparent 2px
+  );
+  background-size: 40px 40px;
+  opacity:0.25;
+  pointer-events:none;
+}
+#skills > *{position:relative;z-index:1}
     #skills .s-label{color:var(--magenta-light)}
     #skills .s-title{color:white}
     .skills-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
@@ -750,11 +764,11 @@
     }
     /* polka dots bg on contact */
     #contact::before{
-      content:'';position:absolute;inset:0;
-      background-image:radial-gradient(circle, var(--magenta-light) 1.5px, transparent 1.5px);
-      background-size:30px 30px;
-      opacity:0.2;pointer-events:none;
-    }
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle, var(--magenta-light) 2.5px, transparent 2.5px);
+  background-size:42px 42px;
+  opacity:0.2;pointer-events:none;
+}
     #contact > *{position:relative}
     #contact .s-title{max-width:480px}
     .contact-note{font-size:0.92rem;color:var(--muted);max-width:400px;margin-bottom:2rem}
