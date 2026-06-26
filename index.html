@@ -810,8 +810,8 @@
   paint-order:stroke fill;
 }
 [data-theme="dark"] .hero-arc-text text{
-  fill:#fff6d1;
-  stroke:var(--cream);
+  -webkit-text-stroke:2.5px var(--cream);
+  -webkit-text-fill-color:#ffe066;
 }
   
 /* ===== SCRAPBOOK (right column of About) ===== */
@@ -916,6 +916,12 @@
 /* ===== DARK MODE OVERRIDES ===== */
 body{background:var(--bg-page);color:var(--ink);transition:background 0.3s ease,color 0.3s ease}
 nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
+[data-theme="dark"] #experience{
+  background:#0b1117;
+}
+[data-theme="dark"] #skills{
+  background:#0b1117;
+}
 [data-theme="dark"] .nav-name{color:var(--ink)}
 [data-theme="dark"] .nav-links a{color:var(--muted)}
 [data-theme="dark"] #hero .hero-left{background:#1f2530}
