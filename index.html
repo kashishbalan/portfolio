@@ -689,24 +689,24 @@
   border-radius: 100px;
   font-weight: 500;
 }
-    .proj-row:nth-child(3) .proj-row-img {
+    .proj-row.proj-hoursly .proj-row-img {
   background: #c8e8f0;
 }
-.proj-row:nth-child(3) .proj-row-img img {
+.proj-row.proj-hoursly .proj-row-img img {
   object-fit: contain;
   padding: 0.5rem;
 }
 
-.proj-row:nth-child(4) .proj-row-img {
+.proj-row.proj-concertify .proj-row-img {
   background: #f0f5f0;
 }
-.proj-row:nth-child(4) .proj-row-img img {
+.proj-row.proj-concertify .proj-row-img img {
   object-fit: contain;
 }
-.proj-row:nth-child(7) .proj-row-img {
+.proj-row.proj-imposter .proj-row-img {
   background: #ffffff;
 }
-.proj-row:nth-child(7) .proj-row-img img {
+.proj-row.proj-imposter .proj-row-img img {
   object-fit: contain;
   padding: 0.5rem;
 }
@@ -1182,22 +1182,20 @@ nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
 <h2 class="s-title bubble-heading reveal">Projects</h2>
   <div class="projects-list">
 
-    <!-- MedExplain -->
+    <!-- Edge Quant Bench -->
     <div class="proj-row reveal">
       <div class="proj-row-img">
-        <img src="medexplain.png" alt="MedExplain CMS dashboard"/>
+        <img src="edge_quant_bench.jpeg" alt="Edge-Quant-Bench size vs perplexity trade-off plot"/>
       </div>
       <div class="proj-row-body">
-  
-        <h3>MedExplain</h3>
-        <p class="proj-sub">Health Equity CMS · Cornell Hack4Impact</p>
-        <p class="proj-desc">A full-stack content management system that helps a health equity nonprofit publish accessible, evidence-based medical information. I built admin dashboard features — author management, search and filter with Algolia, bulk article editing, assessment-question authoring, and subcategory tagging — to streamline delivery to underserved patient communities.</p>
+        <h3>Edge-Quant-Bench</h3>
+        <p class="proj-sub">LLM/VLM Quantization Benchmarking Suite</p>
+        <p class="proj-desc">A CLI tool that automates the full quantization workflow for deploying LLMs and VLMs on edge hardware like Raspberry Pi. It builds llama.cpp, sweeps a Hugging Face model through an importance-matrix-calibrated GGUF quantization ladder (Q8_0 down to Q2_K), and benchmarks size, perplexity, and throughput at each level to find the "knee" — the smallest quantization staying within 5% of full-precision quality. On Llama 3.2 3B, it identified Q3_K_M as optimal: 26% of original size, only a 4.3% perplexity increase, and a 2.49x generation speedup, versus catastrophic degradation at Q2_K.</p>
         <div class="proj-tags">
-          <span class="ptag">JavaScript</span><span class="ptag">React</span><span class="ptag">Algolia</span><span class="ptag">Azure</span><span class="ptag">Node.js</span>
+          <span class="ptag">Python</span><span class="ptag">llama.cpp</span><span class="ptag">Ollama</span><span class="ptag">Model Quantization</span><span class="ptag">Edge AI</span>
         </div>
         <div class="proj-card-links">
-          <a href="https://github.com/cornellh4i/MedExplain" target="_blank" class="proj-card-link primary">GitHub</a>
-          <a href="https://www.cornellh4i.org/" target="_blank" class="proj-card-link">Hack4Impact</a>
+          <a href="https://github.com/kashishbalan/edge-quant-bench" target="_blank" class="proj-card-link primary">GitHub</a>
         </div>
       </div>
     </div>
@@ -1215,96 +1213,6 @@ nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
         </div>
         <div class="proj-card-links">
           <a href="https://github.com/kashishbalan/sentiment-trader/tree/main" target="_blank" class="proj-card-link primary">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hoursly -->
-    <div class="proj-row reveal">
-      <div class="proj-row-img">
-        <img src="hoursely.jpeg" alt="Hoursly App Screenshot"/>
-      </div>
-      <div class="proj-row-body">
-        <h3>Hoursly</h3>
-        <p class="proj-sub">Cornell student tooling</p>
-        <p class="proj-desc">A centralized app that helps Cornell students quickly find and track TA office hours across all their courses. Built around a Node.js backend with searchable schedules, course-level filters, and real-time availability so students stop digging through course pages.</p>
-        <div class="proj-tags">
-          <span class="ptag">Node.js</span><span class="ptag">Back-End</span><span class="ptag">API Development</span>
-        </div>
-        <div class="proj-card-links">
-          <a href="https://github.com/kashishbalan/HourslyBackend" target="_blank" class="proj-card-link primary">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Concertify -->
-    <div class="proj-row reveal">
-      <div class="proj-row-img">
-        <img src="concertify.jpeg" alt="Concertify Music Dashboard"/>
-      </div>
-      <div class="proj-row-body">
-        <h3>Concertify</h3>
-        <p class="proj-sub">Concert discovery for Spotify</p>
-        <p class="proj-desc">A Spotify extension that lets users save upcoming concerts for their top artists, explore albums and playlists, and discover local events — all in one place. Designed in Figma, built on the Spotify API with a Firebase backend so listening history drives the concert feed.</p>
-        <div class="proj-tags">
-          <span class="ptag">Spotify API</span><span class="ptag">Firebase</span><span class="ptag">Figma</span>
-        </div>
-        <div class="proj-card-links">
-          <a href="https://drive.google.com/file/d/1ODG_oL6ivqcrChpEZGZfJ6gHGpsCVhkx/view" target="_blank" class="proj-card-link primary">Watch Demo</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Telehealth -->
-    <div class="proj-row reveal">
-      <div class="proj-row-img">
-        <img src="telehealth.jpeg" alt="Telehealth Platform Screenshot"/>
-      </div>
-      <div class="proj-row-body">
-        <h3>Telehealth Platform</h3>
-        <p class="proj-sub">Cornell Engineering World Health</p>
-        <p class="proj-desc">A community-centered digital wellness hub for the Navajo Nation, where over 50% of households lack broadband. Blends digital health with Diné principles like Hózhó (balance) and K'é (kinship). React.js interface with earth-tone palettes, circular layouts, and low-bandwidth, mobile-first design.</p>
-        <div class="proj-tags">
-          <span class="ptag">React.js</span><span class="ptag">Healthcare Equity</span><span class="ptag">Mobile-First</span>
-        </div>
-        <div class="proj-card-links">
-          <a href="Software_Final_Poster.pdf" target="_blank" class="proj-card-link primary">View Poster</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Expert Classifier -->
-    <div class="proj-row reveal">
-      <div class="proj-row-img">
-        <img src="expert_classifier.jpeg" alt="Expert Classifier Notebook Screenshot"/>
-      </div>
-      <div class="proj-row-body">
-        <h3>Expert Classifier</h3>
-        <p class="proj-sub">MIT Lincoln Laboratory</p>
-        <p class="proj-desc">An NLP model classifying experts vs. non-experts on StackExchange using Naive Bayes and text-style features. Built a sentiment-analysis program as an additional classification signal, exploring how writing tone correlates with domain expertise.</p>
-        <div class="proj-tags">
-          <span class="ptag">Python</span><span class="ptag">NLP</span><span class="ptag">Naive Bayes</span>
-        </div>
-        <div class="proj-card-links">
-          <a href="Expert_Classifier_Presentation.pdf" target="_blank" class="proj-card-link primary">View Presentation</a>
-        </div>
-      </div>
-    </div>
-    <!-- Imposter -->
-    <div class="proj-row reveal">
-      <div class="proj-row-img">
-        <img src="imposter.png" alt="Imposter Terminal Game Screenshot"/>
-      </div>
-      <div class="proj-row-body">
-        <h3>Imposter</h3>
-        <p class="proj-sub">OCaml · TCP Networking · Dune</p>
-        <p class="proj-desc">A terminal remake of the popular social deduction game. Every player is secretly assigned a role of Imposter or not; non-Imposters share a hidden category while the Imposter doesn't, and players take turns giving category-related clues without being too specific or too vague. Built the TCP server-client networking layer in OCaml enabling real-time multiplayer for 3+ players via terminal, contributing ~400 lines (~26% of a 1,550 LOC codebase) across 4 teammates with minimal merge conflicts.</p>
-        <div class="proj-tags">
-          <span class="ptag">OCaml</span><span class="ptag">TCP Networking</span><span class="ptag">Dune</span>
-        </div>
-        <div class="proj-card-links">
-          <a href="https://github.com/hannahtjacob/imposter" target="_blank" class="proj-card-link primary">GitHub</a>
-          <a href="https://www.youtube.com/watch?v=xeREy-6ZXhE" target="_blank" class="proj-card-link">Watch Demo</a>
         </div>
       </div>
     </div>
@@ -1327,20 +1235,113 @@ nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
       </div>
     </div>
 
-    <!-- Edge Quant Bench -->
-    <div class="proj-row reveal">
+    <!-- Imposter -->
+    <div class="proj-row reveal proj-imposter">
       <div class="proj-row-img">
-        <img src="edge_quant_bench.jpeg" alt="Edge-Quant-Bench size vs perplexity trade-off plot"/>
+        <img src="imposter.png" alt="Imposter Terminal Game Screenshot"/>
       </div>
       <div class="proj-row-body">
-        <h3>Edge-Quant-Bench</h3>
-        <p class="proj-sub">LLM/VLM Quantization Benchmarking Suite</p>
-        <p class="proj-desc">A CLI tool that automates the full quantization workflow for deploying LLMs and VLMs on edge hardware like Raspberry Pi. It builds llama.cpp, sweeps a Hugging Face model through an importance-matrix-calibrated GGUF quantization ladder (Q8_0 down to Q2_K), and benchmarks size, perplexity, and throughput at each level to find the "knee" — the smallest quantization staying within 5% of full-precision quality. On Llama 3.2 3B, it identified Q3_K_M as optimal: 26% of original size, only a 4.3% perplexity increase, and a 2.49x generation speedup, versus catastrophic degradation at Q2_K.</p>
+        <h3>Imposter</h3>
+        <p class="proj-sub">OCaml · TCP Networking · Dune</p>
+        <p class="proj-desc">A terminal remake of the popular social deduction game. Every player is secretly assigned a role of Imposter or not; non-Imposters share a hidden category while the Imposter doesn't, and players take turns giving category-related clues without being too specific or too vague. Built the TCP server-client networking layer in OCaml enabling real-time multiplayer for 3+ players via terminal, contributing ~400 lines (~26% of a 1,550 LOC codebase) across 4 teammates with minimal merge conflicts.</p>
         <div class="proj-tags">
-          <span class="ptag">Python</span><span class="ptag">llama.cpp</span><span class="ptag">Ollama</span><span class="ptag">Model Quantization</span><span class="ptag">Edge AI</span>
+          <span class="ptag">OCaml</span><span class="ptag">TCP Networking</span><span class="ptag">Dune</span>
         </div>
         <div class="proj-card-links">
-          <a href="https://github.com/kashishbalan/edge-quant-bench" target="_blank" class="proj-card-link primary">GitHub</a>
+          <a href="https://github.com/hannahtjacob/imposter" target="_blank" class="proj-card-link primary">GitHub</a>
+          <a href="https://www.youtube.com/watch?v=xeREy-6ZXhE" target="_blank" class="proj-card-link">Watch Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MedExplain -->
+    <div class="proj-row reveal">
+      <div class="proj-row-img">
+        <img src="medexplain.png" alt="MedExplain CMS dashboard"/>
+      </div>
+      <div class="proj-row-body">
+
+        <h3>MedExplain</h3>
+        <p class="proj-sub">Health Equity CMS · Cornell Hack4Impact</p>
+        <p class="proj-desc">A full-stack content management system that helps a health equity nonprofit publish accessible, evidence-based medical information. I built admin dashboard features — author management, search and filter with Algolia, bulk article editing, assessment-question authoring, and subcategory tagging — to streamline delivery to underserved patient communities.</p>
+        <div class="proj-tags">
+          <span class="ptag">JavaScript</span><span class="ptag">React</span><span class="ptag">Algolia</span><span class="ptag">Azure</span><span class="ptag">Node.js</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="https://github.com/cornellh4i/MedExplain" target="_blank" class="proj-card-link primary">GitHub</a>
+          <a href="https://www.cornellh4i.org/" target="_blank" class="proj-card-link">Hack4Impact</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expert Classifier -->
+    <div class="proj-row reveal">
+      <div class="proj-row-img">
+        <img src="expert_classifier.jpeg" alt="Expert Classifier Notebook Screenshot"/>
+      </div>
+      <div class="proj-row-body">
+        <h3>Expert Classifier</h3>
+        <p class="proj-sub">MIT Lincoln Laboratory</p>
+        <p class="proj-desc">An NLP model classifying experts vs. non-experts on StackExchange using Naive Bayes and text-style features. Built a sentiment-analysis program as an additional classification signal, exploring how writing tone correlates with domain expertise.</p>
+        <div class="proj-tags">
+          <span class="ptag">Python</span><span class="ptag">NLP</span><span class="ptag">Naive Bayes</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="Expert_Classifier_Presentation.pdf" target="_blank" class="proj-card-link primary">View Presentation</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Telehealth -->
+    <div class="proj-row reveal">
+      <div class="proj-row-img">
+        <img src="telehealth.jpeg" alt="Telehealth Platform Screenshot"/>
+      </div>
+      <div class="proj-row-body">
+        <h3>Telehealth Platform</h3>
+        <p class="proj-sub">Cornell Engineering World Health</p>
+        <p class="proj-desc">A community-centered digital wellness hub for the Navajo Nation, where over 50% of households lack broadband. Blends digital health with Diné principles like Hózhó (balance) and K'é (kinship). React.js interface with earth-tone palettes, circular layouts, and low-bandwidth, mobile-first design.</p>
+        <div class="proj-tags">
+          <span class="ptag">React.js</span><span class="ptag">Healthcare Equity</span><span class="ptag">Mobile-First</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="Software_Final_Poster.pdf" target="_blank" class="proj-card-link primary">View Poster</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concertify -->
+    <div class="proj-row reveal proj-concertify">
+      <div class="proj-row-img">
+        <img src="concertify.jpeg" alt="Concertify Music Dashboard"/>
+      </div>
+      <div class="proj-row-body">
+        <h3>Concertify</h3>
+        <p class="proj-sub">Concert discovery for Spotify</p>
+        <p class="proj-desc">A Spotify extension that lets users save upcoming concerts for their top artists, explore albums and playlists, and discover local events — all in one place. Designed in Figma, built on the Spotify API with a Firebase backend so listening history drives the concert feed.</p>
+        <div class="proj-tags">
+          <span class="ptag">Spotify API</span><span class="ptag">Firebase</span><span class="ptag">Figma</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="https://drive.google.com/file/d/1ODG_oL6ivqcrChpEZGZfJ6gHGpsCVhkx/view" target="_blank" class="proj-card-link primary">Watch Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hoursly -->
+    <div class="proj-row reveal proj-hoursly">
+      <div class="proj-row-img">
+        <img src="hoursely.jpeg" alt="Hoursly App Screenshot"/>
+      </div>
+      <div class="proj-row-body">
+        <h3>Hoursly</h3>
+        <p class="proj-sub">Cornell student tooling</p>
+        <p class="proj-desc">A centralized app that helps Cornell students quickly find and track TA office hours across all their courses. Built around a Node.js backend with searchable schedules, course-level filters, and real-time availability so students stop digging through course pages.</p>
+        <div class="proj-tags">
+          <span class="ptag">Node.js</span><span class="ptag">Back-End</span><span class="ptag">API Development</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="https://github.com/kashishbalan/HourslyBackend" target="_blank" class="proj-card-link primary">GitHub</a>
         </div>
       </div>
     </div>
