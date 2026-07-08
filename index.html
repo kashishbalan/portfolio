@@ -1182,6 +1182,24 @@ nav{background:var(--nav-bg);border-bottom-color:var(--dusty-pale)}
 <h2 class="s-title bubble-heading reveal">Projects</h2>
   <div class="projects-list">
 
+    <!-- Edge Quant Bench -->
+    <div class="proj-row reveal">
+      <div class="proj-row-img">
+        <img src="edge_quant_bench.jpeg" alt="Edge-Quant-Bench size vs perplexity trade-off plot"/>
+      </div>
+      <div class="proj-row-body">
+        <h3>Edge-Quant-Bench</h3>
+        <p class="proj-sub">LLM/VLM Quantization Benchmarking Suite</p>
+        <p class="proj-desc">A CLI tool that automates the full quantization workflow for deploying LLMs and VLMs on edge hardware like Raspberry Pi. It builds llama.cpp, sweeps a Hugging Face model through an importance-matrix-calibrated GGUF quantization ladder (Q8_0 down to Q2_K), and benchmarks size, perplexity, and throughput at each level to find the "knee" — the smallest quantization staying within 5% of full-precision quality. On Llama 3.2 3B, it identified Q3_K_M as optimal: 26% of original size, only a 4.3% perplexity increase, and a 2.49x generation speedup, versus catastrophic degradation at Q2_K.</p>
+        <div class="proj-tags">
+          <span class="ptag">Python</span><span class="ptag">llama.cpp</span><span class="ptag">Ollama</span><span class="ptag">Model Quantization</span><span class="ptag">Edge AI</span>
+        </div>
+        <div class="proj-card-links">
+          <a href="https://github.com/kashishbalan/edge-quant-bench" target="_blank" class="proj-card-link primary">GitHub</a>
+        </div>
+      </div>
+    </div>
+
     <!-- MedExplain -->
     <div class="proj-row reveal">
       <div class="proj-row-img">
